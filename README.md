@@ -1,5 +1,5 @@
 # Ecommerce system
-> Fully operational ecommerce project build with Laravel 8. Fetures like MultiAuthentication system (admin panel and user login), PayPal integration, Multilanguage, Coupon system, Invoice generating with PDF and much more are implemented.
+> Fully operational ecommerce project build with Laravel 8. Features like MultiAuthentication system (admin panel and user login), PayPal integration, Multilanguage, Coupon system, Invoice generating with PDF and much more are implemented.
 
 
 ## Table of Contents
@@ -7,7 +7,7 @@
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Screenshots](#screenshots)
-* [Setup](#setup)
+* [Setup](#setup-for-local-environment)
 * [Project Status](#project-status)
 * [Contact](#contact)
 <!-- * [License](#license) -->
