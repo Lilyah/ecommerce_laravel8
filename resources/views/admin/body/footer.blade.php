@@ -5,7 +5,7 @@
 			<a class="nav-link" href="javascript:void(0)">FAQ</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#">Purchase Now</a>
+			<a class="nav-link" href="#">http://127.0.0.1:8000/</a>
 		  </li>
 		</ul>
     </div>
