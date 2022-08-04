@@ -100,11 +100,25 @@
 			  </li>
 			</ul>
 		  </li>	
+
+			@php 
+
+			/**
+    		* TODO: I don't like the simplicity of this method, it has to find the loged in admin, not only the first record from the DB 
+     		*/
+
+			$adminData = DB::table('admins')->first();
+
+		 	@endphp
 		  
 	      <!-- User Account-->
           <li class="dropdown user user-menu">	
 			<a href="#" class="waves-effect waves-light rounded dropdown-toggle p-0" data-toggle="dropdown" title="User">
-				<img src="{{ asset('backend/images/avatar/1.jpg') }}" alt="">
+
+				<!--
+    			 // * The following if statement works opposite of the normal, don't know why
+				-->
+				<img src="{{ !empty($admintData->profile_photo_path) ? url('upload/admin_images/no_image.jpg') : url('upload/admin_images/'.$adminData->profile_photo_path) }}" alt="">
 			</a>
 			<ul class="dropdown-menu animated flipInX">
 			  <li class="user-body">
