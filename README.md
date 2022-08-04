@@ -25,6 +25,7 @@
 
 ## Features
 - MultiAuthentication system - [JetStream package](https://jetstream.laravel.com/2.x/introduction.html)
+- ToastrJS library for non-blocking notifications - [version 2.1.4](https://cdnjs.com/libraries/toastr.js)
 
 
 ## Screenshots
