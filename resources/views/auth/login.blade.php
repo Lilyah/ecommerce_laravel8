@@ -28,7 +28,7 @@
 	</div>
 
     @if (session('status'))
-        <div class="mb-4 font-medium text-sm text-green-600">
+        <div class="mb-4 mt-4 font-medium text-sm bg-success">
             {{ session('status') }}
         </div>
     @endif
