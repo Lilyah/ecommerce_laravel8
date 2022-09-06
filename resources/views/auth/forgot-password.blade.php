@@ -26,7 +26,7 @@
 	<p class="">Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
 
     @if (session('status'))
-        <div class="mb-4 font-medium text-sm text-green-600">
+        <div class="mb-4 mt-4 font-medium text-sm bg-success">
             {{ session('status') }}
         </div>
     @endif
