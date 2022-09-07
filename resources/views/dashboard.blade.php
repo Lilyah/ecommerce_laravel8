@@ -7,10 +7,10 @@
         <div class="row">
 
             <div class="col-md-2">
-                <img src="{{ !empty($editData->profile_photo_path) ? url('upload/admin_images/'.$editData->profile_photo_path) : url('upload/admin_images/no_image.jpg') }}" class="card-img-top" style="border-radius:50%; height:100%; width:100%; margin-top:10%; margin-bottom:10%">
+                <img src="{{ !empty($user->profile_photo_path) ? url('upload/user_images/'.$user->profile_photo_path) : url('upload/user_images/no_image.jpg') }}" class="card-img-top" style="border-radius:50%; height:100%; width:100%; margin-top:10%; margin-bottom:10%">
                 <ul class="list-group list-group-flush">
                     <a href="" class="btn btn-primary btn-sm btn-block">Home</a>
-                    <a href="" class="btn btn-primary btn-sm btn-block">Profile Update</a>
+                    <a href="{{ route('user.profile') }}" class="btn btn-primary btn-sm btn-block">Profile Update</a>
                     <a href="" class="btn btn-primary btn-sm btn-block">Change Password</a>
                     <a href="{{ route('user.logout') }}" class="btn btn-danger btn-sm btn-block">Logout</a>
                 </ul>
