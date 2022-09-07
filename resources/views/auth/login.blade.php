@@ -39,8 +39,10 @@
 		<div class="form-group">
 		    <label class="info-title" for="email">Email Address <span>*</span></label>
 		    <input type="email" class="form-control unicase-form-control text-input" name="email" id="email" :value="old('email')" required autofocus>
-			
-			//! TODO: At some point have to change the name="email" of this input OR the @error name, because at the frontend it shows an error twice, e.g. it makes dublicate with name="email" of the Register form.
+
+			<?php
+			//! TODO: At some point have to change the name="email" of this input OR the @error name, because at the frontend it shows an error twice, e.g. it makes dublicate with name="email" of the Register form
+			?>
 			@error('email')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
