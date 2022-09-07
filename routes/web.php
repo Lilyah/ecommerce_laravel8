@@ -60,3 +60,6 @@ Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.lo
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+// User logout
+Route::get('/user/logout', [IndexController::class, 'UserLogout'])->name('user.logout');
