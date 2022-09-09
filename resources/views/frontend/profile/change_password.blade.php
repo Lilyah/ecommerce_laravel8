@@ -22,30 +22,25 @@
 
             <div class="col-md-6">
                 <div class="card">
-                    <h3 class="text-center"><span class="text-danger">Update Your Profile</span></h3>
+                    <h3 class="text-center"><span class="text-danger">Change Your Password </span></h3>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.profile.store') }}" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('user.change.password.store') }}">
                             @csrf 
 
                             <div class="form-group">
-	    	                    <label class="info-title" for="name">Name</label>
-	    	                    <input type="text" class="form-control" name="name" value="{{ $user->name }}">
+	    	                    <label class="info-title" for="old_password">Current Password</label>
+	    	                    <input type="password" class="form-control" name="old_password" id="current_password">
 	  	                    </div>
 
                             <div class="form-group">
-	    	                    <label class="info-title" for="email">Email</label>
-	    	                    <input type="email" class="form-control" name="email" value="{{ $user->email }}">
+	    	                    <label class="info-title" for="password">New Password</label>
+	    	                    <input type="password" class="form-control" name="password" id="password">
 	  	                    </div>
 
                             <div class="form-group">
-	    	                    <label class="info-title" for="phone">Phone</label>
-	    	                    <input type="text" class="form-control" name="phone" value="{{ $user->phone }}">
-	  	                    </div>
-
-                            <div class="form-group">
-	    	                    <label class="info-title" for="profile_photo_path">User Image</label>
-	    	                    <input type="file" class="form-control" name="profile_photo_path">
+	    	                    <label class="info-title" for="password_confirmation">Confirm Password</label>
+	    	                    <input type="password" class="form-control" name="password_confirmation" id ="password_confirmation">
 	  	                    </div>
 
                             <div class="form-group">
