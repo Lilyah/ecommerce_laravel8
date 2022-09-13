@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminProfileController;
+use App\Http\Controllers\Backend\BrandsController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -33,6 +34,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin:admin']], function(){
     Route::post('/login', [AdminController::class, 'store'])->name('admin.login');
 });
 
+// Admin Logout
+Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+
 // Admin Dashboard 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
     return view('admin.index');
@@ -45,10 +49,15 @@ Route::post('/admin/profile/store', [AdminProfileController::class, 'AdminProfil
 Route::get('/admin/change_password', [AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
 Route::post('/admin/change_password/update', [AdminProfileController::class, 'AdminUpdatePassword'])->name('admin.update.password');
 
+// Admin Brands
+Route::prefix('brands')->group(function(){
+    Route::get('/view', [BrandsController::class, 'BrandsView'])->name('all.brands');
+
+});
 
 
-// Admin Logout
-Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+
+
 
 
 
