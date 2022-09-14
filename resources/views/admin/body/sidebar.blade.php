@@ -1,3 +1,13 @@
+@php
+
+// This code is for the active links. 
+// wWhen a link in the url is active the btn will be colorful.
+
+$prefix = Request::route()->getPrefix(); // taking the prefix from the route
+$route = Route::current()->getName(); // taking the route name
+
+@endphp
+
 <aside class="main-sidebar">
     <!-- sidebar-->
     <section class="sidebar">	
@@ -17,14 +27,14 @@
         <!-- sidebar menu-->
         <ul class="sidebar-menu" data-widget="tree">  
 		  
-		      <li>
-            <a href="index.html">
+		      <li class="{{ ($route == 'dashboard') ? 'active' : ''}}">
+            <a href="{{ url('admin/dashboard') }}">
               <i data-feather="pie-chart"></i>
 			        <span>Dashboard</span>
             </a>
           </li>  
 		
-          <li class="treeview">
+          <li class="treeview {{ ($prefix == '/brands') ? 'active' : ''}}">
             <a href="#">
               <i data-feather="tag"></i>
               <span>Brands</span>
@@ -33,7 +43,9 @@
               </span>
             </a>
             <ul class="treeview-menu">
-              <li><a href="{{ route('all.brands') }}"><i class="ti-more"></i>All Brands</a></li>
+              <li class="{{ ($route == 'all.brands') ? 'active' : ''}}">
+                <a href="{{ route('all.brands') }}"><i class="ti-more"></i>All Brands</a>
+              </li>
             </ul>
           </li> 
 		  
