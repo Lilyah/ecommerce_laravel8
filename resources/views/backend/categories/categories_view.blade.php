@@ -90,6 +90,7 @@
 					    		<h5>Category Icon<span class="text-danger">*</span></h5>
 					    		<div class="controls">
 					    		    <input type="text" name="category_icon" class="form-control" value="{{ old('category_icon') }}"> 
+                                    <small class="text-muted">Note: Use icons from <a href="https://themify.me/themify-icons" target=”_blank”>https://themify.me/themify-icons</a></small> <!-- target=”_blank” is to open the url in new browser tab -->
                                     @error('category_icon')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
