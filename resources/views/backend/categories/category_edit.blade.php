@@ -21,6 +21,8 @@
                         <form method="post" action="{{ route('category.update') }}">
                             @csrf
 
+                            <input type="hidden" name="id" value="{{ $category->id }}">
+
                             <div class="form-group">
 					    		<h5>Category Name EN<span class="text-danger">*</span></h5>
 					    		<div class="controls">
@@ -53,7 +55,7 @@
 					    	</div>
 
                             <div class="text-xs-right">
-					    	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Add">
+					    	<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
 					    </div>
 
                         </form>
