@@ -53,7 +53,9 @@ Route::post('/admin/change_password/update', [AdminProfileController::class, 'Ad
 Route::prefix('brands')->group(function(){
     Route::get('/view', [BrandsController::class, 'BrandsView'])->name('all.brands');
     Route::post('/store', [BrandsController::class, 'BrandStore'])->name('brand.store');
-
+    Route::get('/edit/{id}', [BrandsController::class, 'BrandEdit'])->name('brand.edit');
+    Route::post('/update', [BrandsController::class, 'BrandUpdate'])->name('brand.update');
+    Route::get('/delete/{id}', [BrandsController::class, 'BrandDelete'])->name('brand.delete');
 });
 
 
