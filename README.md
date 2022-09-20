@@ -26,6 +26,8 @@
 ## Features
 - MultiAuthentication system - [JetStream package](https://jetstream.laravel.com/2.x/introduction.html)
 - ToastrJS library for non-blocking notifications - [version 2.1.4](https://cdnjs.com/libraries/toastr.js)
+- Intervention Image package for handling images - [version 2](https://intervention.io/)
+- SweetAlert2 for pop-up boxes - [version 11.4.33](https://github.com/sweetalert2/sweetalert2)
 
 
 ## Screenshots
