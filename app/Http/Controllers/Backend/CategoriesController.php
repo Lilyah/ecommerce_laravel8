@@ -80,4 +80,17 @@ class CategoriesController extends Controller
             return redirect()->route('all.categories')->with($notification);        
             
     }
+
+    // Admin Delete Category
+    public function CategoryDelete($id){
+        $category = Categories::findOrFail($id)->delete(); // finding & deleting the data from the db;
+    
+        $notification = array(
+            'message' => 'Category Deleted Successfully',
+            'alert-type' => 'success'
+        );
+    
+        return redirect()->route('all.categories')->with($notification);    
+    }
+    
 }
