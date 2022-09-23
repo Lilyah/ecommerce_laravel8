@@ -51,7 +51,7 @@ $route = Route::current()->getName(); // taking the route name
 		  
           <li class="treeview {{ ($prefix == '/categories') ? 'active' : ''}}">
             <a href="#">
-              <i data-feather="grid"></i> <span>Category</span>
+              <i data-feather="grid"></i> <span>Categories</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
               </span>
@@ -62,6 +62,9 @@ $route = Route::current()->getName(); // taking the route name
               </li>
               <li class="{{ ($route == 'all.subcategories') ? 'active' : ''}}">
                 <a href="{{ route('all.subcategories') }}"><i class="ti-more"></i>All Subcategories</a>
+              </li>
+              <li class="{{ ($route == 'all.subsubcategories') ? 'active' : ''}}">
+                <a href="{{ route('all.subsubcategories') }}"><i class="ti-more"></i>All SubSubcategories</a>
               </li>
             </ul>
           </li>
