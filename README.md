@@ -32,27 +32,17 @@
 
 ## Detailed description
 ### MultiAuthentication system 
-- Admin register, User register, Admin login, User login, Forget password
+- Admin register, Admin login, Admin Forget password
+- User register, User login, User Forget password
 
 ### Admin Panel
-- Admin profile 
--- Change profile image, email, username
--- Admin change password
--- Admin logout
+- Admin profile - [change profile image], [change email], [change username], [change password], admin logout
+- Brands - [view of all brands], [add brand], [edit brand], [delete brand]
+- Categories - [view of all categories], [add category], [edit category], [delete category]
+- SubCategories - [view of all subcategories], [add subcategory], [edit subcategory], [delete subcategory]
+- SubSubCategories - [view of all categories], [add subsubcategory], [edit subsubcategory], [delete subsubcategory]
 
-- Brands
--- View all brands
--- Add brand
--- Edit brand
--- Delete brand
-
-- Categories, SubCategories, SubSubCategories
--- View all categories/subcategories/subsubcategories
--- Add categories/subcategories/subsubcategories
--- Edit categories/subcategories/subsubcategories
--- Delete categories/subcategories/subsubcategories
-
-- Products
+- Products - [], [], [], []
 
 
 ### User Panel
