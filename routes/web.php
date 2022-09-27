@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\Backend\BrandsController;
 use App\Http\Controllers\Backend\CategoriesController;
 use App\Http\Controllers\Backend\SubCategoriesController;
+use App\Http\Controllers\Backend\ProductsController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -83,10 +84,13 @@ Route::prefix('categories')->group(function(){
     Route::post('/sub/sub/update', [SubCategoriesController::class, 'SubSubCategoryUpdate'])->name('subsubcategory.update');
     Route::get('/sub/sub/delete/{id}', [SubCategoriesController::class, 'SubSubCategoryDelete'])->name('subsubcategory.delete');
     Route::get('/subcategory/ajax/{category_id}', [SubCategoriesController::class, 'GetSubcategory']); // for the ajax in subsubcategory_view.blade for add SubSubcategory
-
-
 });
 
+
+// Admin Products
+Route::prefix('products')->group(function(){
+    Route::get('/add', [ProductsController::class, 'AddProduct'])->name('add.product');
+});
 
 
 
