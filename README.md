@@ -30,6 +30,34 @@
 - SweetAlert2 for pop-up boxes - [version 11.4.33](https://github.com/sweetalert2/sweetalert2)
 
 
+## Detailed description
+### MultiAuthentication system 
+- Admin register, User register, Admin login, User login, Forget password
+
+### Admin Panel
+- Admin profile 
+-- Change profile image, email, username
+-- Admin change password
+-- Admin logout
+
+- Brands
+-- View all brands
+-- Add brand
+-- Edit brand
+-- Delete brand
+
+- Categories, SubCategories, SubSubCategories
+-- View all categories/subcategories/subsubcategories
+-- Add categories/subcategories/subsubcategories
+-- Edit categories/subcategories/subsubcategories
+-- Delete categories/subcategories/subsubcategories
+
+- Products
+
+
+### User Panel
+
+
 ## Screenshots
 ![]()
 
