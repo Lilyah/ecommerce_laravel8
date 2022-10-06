@@ -83,13 +83,16 @@ Route::prefix('categories')->group(function(){
     Route::get('/sub/sub/edit/{id}', [SubCategoriesController::class, 'SubSubCategoryEdit'])->name('subsubcategory.edit');
     Route::post('/sub/sub/update', [SubCategoriesController::class, 'SubSubCategoryUpdate'])->name('subsubcategory.update');
     Route::get('/sub/sub/delete/{id}', [SubCategoriesController::class, 'SubSubCategoryDelete'])->name('subsubcategory.delete');
-    Route::get('/subcategory/ajax/{category_id}', [SubCategoriesController::class, 'GetSubcategory']); // for the ajax in subsubcategory_view.blade for add SubSubcategory
+    Route::get('/subcategory/ajax/{category_id}', [SubCategoriesController::class, 'GetSubCategory']); // for the ajax in subsubcategory_view.blade for add SubSubcategory
+    Route::get('/subsubcategory/ajax/{subcategory_id}', [SubCategoriesController::class, 'GetSubSubCategory']); // for the ajax in subsubcategory_view.blade for 'Add new product'
+
 });
 
 
 // Admin Products
 Route::prefix('products')->group(function(){
     Route::get('/add', [ProductsController::class, 'AddProduct'])->name('add.product');
+
 });
 
 

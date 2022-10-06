@@ -59,13 +59,13 @@ $route = Route::current()->getName(); // taking the route name
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ ($route == 'all.categories') ? 'active' : ''}}">
+              <li class="{{ ($route == 'all.categories' || $route == 'category.edit') ? 'active' : ''}}">
                 <a href="{{ route('all.categories') }}"><i class="ti-more"></i>All Categories</a>
               </li>
-              <li class="{{ ($route == 'all.subcategories') ? 'active' : ''}}">
+              <li class="{{ ($route == 'all.subcategories' || $route == 'subcategory.edit') ? 'active' : ''}}">
                 <a href="{{ route('all.subcategories') }}"><i class="ti-more"></i>All Subcategories</a>
               </li>
-              <li class="{{ ($route == 'all.subsubcategories') ? 'active' : ''}}">
+              <li class="{{ ($route == 'all.subsubcategories' || $route == 'subsubcategory.edit') ? 'active' : ''}}">
                 <a href="{{ route('all.subsubcategories') }}"><i class="ti-more"></i>All SubSubcategories</a>
               </li>
             </ul>
@@ -74,14 +74,14 @@ $route = Route::current()->getName(); // taking the route name
           <!-- Products -->
           <li class="treeview {{ ($prefix == '/products') ? 'active' : ''}}">
             <a href="#">
-              <i data-feather="file"></i>
+              <i data-feather="box"></i>
               <span>Products</span>
               <span class="pull-right-container">
                 <i class="fa fa-angle-right pull-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ ($route == 'all.products') ? 'active' : ''}}">
+              <li class="{{ ($route == 'add.product') ? 'active' : ''}}">
                 <a href="{{ route('add.product') }}"><i class="ti-more"></i>Add Products</a>
               </li>
               <li>

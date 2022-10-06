@@ -126,10 +126,16 @@ class SubCategoriesController extends Controller
         ));
     }
 
-    // Admin Get Subcategories for the form 'Add New SubSubCategory'
-    public function GetSubcategory($category_id){
+    // Admin Get Subcategories for the forms 'Add New SubSubCategory' and 'Add Product'
+    public function GetSubCategory($category_id){
         $subcategories = SubCategories::where('category_id', $category_id)->orderBy('subcategory_name_en', 'ASC')->get();
         return json_encode($subcategories);
+    }
+
+    // Admin Get SubSubcategories for the form 'Add Product'
+    public function GetSubSubCategory($subcategory_id){
+        $subsubcategories = SubSubCategories::where('subcategory_id', $subcategory_id)->orderBy('subsubcategory_name_en', 'ASC')->get();
+        return json_encode($subsubcategories);
     }
 
     // Admin Add New SubSubCategory
