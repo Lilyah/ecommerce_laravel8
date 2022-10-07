@@ -92,7 +92,7 @@ Route::prefix('categories')->group(function(){
 // Admin Products
 Route::prefix('products')->group(function(){
     Route::get('/add', [ProductsController::class, 'AddProduct'])->name('add.product');
-
+    Route::post('/store', [ProductsController::class, 'ProductStore'])->name('product.store');
 });
 
 
