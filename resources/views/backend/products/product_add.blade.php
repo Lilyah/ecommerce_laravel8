@@ -273,7 +273,7 @@
                             <!-- PRODUCT DISCOUNT PRICE -->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Product Discount Price <span class="text-danger">*</span></h5>
+                                    <h5>Product Discount Price</h5>
                                     <div class="controls">
                                         <input type="number" name="discount_price" class="form-control"> 
                                         @error('discount_price')
@@ -300,7 +300,7 @@
                             <!-- PRODUCT MULTIIMAGE -->
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <h5>Product MultiImage <span class="text-danger">*</span></h5>
+                                    <h5>Product MultiImage</h5>
                                     <div class="controls">
                                         <input type="file" name="multi_img[]" class="form-control" multiple="" id="multiImg"> 
                                         @error('multi_img')
@@ -324,7 +324,7 @@
                                 <div class="form-group">
                                     <h5>Short Description EN <span class="text-danger">*</span></h5>
                                     <div class="controls">
-									    <textarea name="short_descp_en" class="form-control" placeholder="Short description EN..."></textarea>
+									    <textarea name="short_descp_en" class="form-control"></textarea>
                                         @error('short_descp_en')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -337,7 +337,7 @@
                                 <div class="form-group">
                                     <h5>Short Description BG <span class="text-danger">*</span></h5>
                                     <div class="controls">
-									<textarea name="short_descp_bg" class="form-control" placeholder="Short description BG..."></textarea>
+									<textarea name="short_descp_bg" class="form-control"></textarea>
                                         @error('short_descp_bg')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
