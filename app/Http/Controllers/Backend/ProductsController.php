@@ -8,6 +8,7 @@ use App\Models\Categories;
 use App\Models\SubCategories;
 use App\Models\SubSubCategories;
 use App\Models\Brands;
+use App\Models\MultiImg;
 use Image;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
@@ -76,7 +77,8 @@ class ProductsController extends Controller
         Image::make($thumbnail)->resize(917, 1000)->save('upload/products/thumbnails/'.$name_gen);
         $product_thumbnail = 'upload/products/thumbnails/'.$name_gen;   
 
-        Products::insert([
+        // Insert the data and get the id of the product, because it will be needed for inserting MultiImg below in this method
+        $product_id = Products::insertGetId([
             'brand_id' => $request->brand_id,
             'category_id' => $request->category_id,
             'subcategory_id' => $request->subcategory_id,
@@ -97,7 +99,7 @@ class ProductsController extends Controller
 
             'selling_price' => $request->selling_price,
             'discount_price' => $request->discount_price,
-            
+
             'short_descp_en' => $request->short_descp_en,
             'short_descp_bg' => $request->short_descp_bg,
             'long_descp_en' => $request->long_descp_en,
@@ -113,6 +115,23 @@ class ProductsController extends Controller
             'status' => 1,
             'created_at' => Carbon::now(),
         ]); 
+
+        //----------------------
+        //--- Multiple Image ---
+        //----------------------
+
+        $images = $request->file('multi_img');
+        foreach($images as $image){
+            $make_name = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(917, 1000)->save('upload/products/multi-images/'.$make_name);
+            $uploadPath = 'upload/products/multi-images/'.$make_name;   
+
+            MultiImg::insert([
+                'product_id' => $product_id,
+                'photo_name' => $uploadPath,
+                'created_at' => Carbon::now(),
+            ]);
+        }
 
         $notification = array(
             'message' => 'New Product added successfully',
