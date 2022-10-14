@@ -27,7 +27,6 @@ class ProductsController extends Controller
         ));
     }
 
-
     // Admin Store Product
     public function ProductStore(Request $request){
         $request->validate([
@@ -138,9 +137,16 @@ class ProductsController extends Controller
             'alert-type' => 'success'
         );
     
-        return redirect()->back()->with($notification);
+        return redirect()->route('manage.products')->with($notification);        
 
+    }
 
+    // Admin Manage Products
+    public function ManageProducts(){
+        $products = Products::latest()->get();
+        return view('backend.products.products_view', compact(
+            'products',
+        ));
     }
 
 
