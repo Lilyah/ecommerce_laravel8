@@ -38,7 +38,7 @@
 								<td>{{ $product->product_name_bg }}</td>
 								<td>{{ $product->product_qty }}</td>
 								<td>
-                                    <a href="" class="btn btn-info" title="Edit"><i class="fa fa-pencil"></i></a>
+                                    <a href="{{ route('product.edit',$product->id) }}" class="btn btn-info" title="Edit"><i class="fa fa-pencil"></i></a>
                                     <a href="" id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a> <!-- id="delete" is needed for SweetAlert2 javascript -->
                                 </td>
 							</tr>

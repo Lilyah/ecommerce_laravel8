@@ -93,7 +93,10 @@ Route::prefix('categories')->group(function(){
 Route::prefix('products')->group(function(){
     Route::get('/add', [ProductsController::class, 'AddProduct'])->name('add.product');
     Route::post('/store', [ProductsController::class, 'ProductStore'])->name('product.store');
-    Route::get('/manage', [ProductsController::class, 'ManageProducts'])->name('manage.products');
+    Route::get('/view', [ProductsController::class, 'ProductsView'])->name('all.products');
+    Route::get('/edit/{id}', [ProductsController::class, 'ProductEdit'])->name('product.edit');
+    Route::post('/update', [ProductsController::class, 'ProductUpdate'])->name('product.update');
+    Route::get('/delete/{id}', [ProductsController::class, 'ProductDelete'])->name('product.delete');
 
 });
 
