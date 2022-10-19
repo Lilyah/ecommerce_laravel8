@@ -96,6 +96,7 @@ Route::prefix('products')->group(function(){
     Route::get('/view', [ProductsController::class, 'ProductsView'])->name('all.products');
     Route::get('/edit/{id}', [ProductsController::class, 'ProductEdit'])->name('product.edit');
     Route::post('/update', [ProductsController::class, 'ProductUpdate'])->name('product.update');
+    Route::post('/multiimage/update', [ProductsController::class, 'ProductMultiImageUpdate'])->name('product.multiimage.update');
     Route::get('/delete/{id}', [ProductsController::class, 'ProductDelete'])->name('product.delete');
 
 });

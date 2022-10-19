@@ -157,12 +157,15 @@ class ProductsController extends Controller
         $subcategories = SubCategories::orderBy('subcategory_name_en', 'ASC')->get(); //getting all data from the DB
         $subsubcategories = SubSubCategories::orderBy('subsubcategory_name_en', 'ASC')->get(); //getting all data from the DB
 
+        $multiimages = MultiImg::where('product_id',$id)->get(); // when the id from column 'product_id' is matching the product id
+
         return view('backend.products.product_edit', compact(
             'product',
             'brands',
             'categories',
             'subcategories',
             'subsubcategories',
+            'multiimages',
         ));
     }
 
@@ -254,6 +257,38 @@ class ProductsController extends Controller
                 
         return redirect()->route('all.products')->with($notification);        
             
+    }
+
+    // Admin Update Product Images
+    public function ProductMultiImageUpdate(Request $request){
+        $images = $request->multi_img; // it's commit from product_edit.blade.php, multiimage edit form, name="multi_img[ $multiimage->id ]"
+
+        foreach($images as $id => $image){
+
+            // Deleting the old image from the db
+            $image_delete = MultiImg::findOrFail($id);
+            unlink($image_delete->photo_name);
+
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(917, 1000)->save('upload/products/multi-images/'.$name_gen);
+            $save_url = 'upload/products/multi-images/'.$name_gen;  
+
+            MultiImg::where('id', $id)->update([
+                'photo_name' => $save_url,
+                'updated_at' => Carbon::now(),
+            ]);
+
+        }
+
+        $notification = array(
+            'message' => 'Product Images Updated successfully',
+            'alert-type' => 'success'
+        );
+                
+        return redirect()->back()->with($notification);        
+
+
+
     }
 
 

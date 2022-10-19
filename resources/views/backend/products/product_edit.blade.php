@@ -416,6 +416,60 @@
 
 		</section>
 		<!-- /.content -->
+
+
+        <!------------------- Multiple Image ----------------->
+        <section class="content">
+
+            <div class="box">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+			            	<div class="box bt-3 border-info">
+			            	    <div class="box-header">
+			            	    	<h4 class="box-title">Product Multiple Image <strong>Update</strong></h4>
+			            	    </div>
+
+                                <form method="POST" action="{{ route('product.multiimage.update') }}" enctype="multipart/form-data" class="pt-5">
+                                    @csrf
+                                    <div class="row row-sm">
+                                        @foreach ($multiimages as $multiimage)
+                                            <div class="col-md-3">
+                            
+                                                <div class="card">
+                                                    <img src="{{ asset($multiimage->photo_name) }}" class="card-img-top" style="height: 130px; width=280px">
+                                                    <div class="card-body">
+                                                        <h5 class="card-title">
+                                                            <a href="" class="btn btn-sm btn-danger" id="delete" title="Delete Image"><i class="fa fa-trash"></i></a>
+                                                        </h5>
+                                                        <p class="card-text">
+                                                            <div class="form-group">
+                                                                <level class="form-control-level">Change Image <span class="tx-danger">*</level>
+                                                                <input type="file" class="form-control" name="multi_img[ {{ $multiimage->id }} ]"> <!-- passing the id of the exact image -->
+                                                            </div>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        @endforeach
+                                    </div>
+
+                                    <div class="text-xs-right">
+					                    <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+					                </div>
+                                </form>
+
+				            </div><!--.box bt-3 border-info-->
+			            </div><!--.col-md-12-->
+                    </div><!-- .row -->
+                </div><!-- .box-body -->
+            </div><!--.box-->
+        </section>
+
+
+
+
 	  </div>
 
 
