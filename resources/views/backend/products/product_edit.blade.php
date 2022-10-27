@@ -468,6 +468,56 @@
         </section>
 
 
+        <!------------------- Thumbnail Image ----------------->
+        <section class="content">
+
+            <div class="box">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="box bt-3 border-info">
+                                <div class="box-header">
+                                    <h4 class="box-title">Product Thumbnail Image <strong>Update</strong></h4>
+                                </div>
+
+                                <form method="POST" action="{{ route('product.thumbnail.update') }}" enctype="multipart/form-data" class="pt-5">
+                                    @csrf
+
+                                    <input type="hidden" name="id" value="{{ $product->id }}"> <!-- the id of the product -->
+                                    <input type="hidden" name="old_image" value="{{ $product->product_thumbnail }}"> <!-- the current thumbnail of the image -->
+
+                                    <div class="row row-sm">
+                                            <div class="col-md-3">
+                            
+                                                <div class="card">
+                                                    <img src="{{ asset($product->product_thumbnail) }}" class="card-img-top" style="height: 130px; width=280px">
+                                                    <div class="card-body">
+                                                        <p class="card-text">
+                                                            <div class="form-group">
+                                                                <level class="form-control-level">Change Image <span class="tx-danger">*</level>
+                                                                <input type="file" class="form-control" name="product_thumbnail" onchange="mainThumbUrl(this)"> <!-- passing the id of the exact image -->
+                                                                <img src="" id="mainThumb">
+                                                            </div>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                    </div>
+
+                                    <div class="text-xs-right">
+                                        <input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update Image">
+                                    </div>
+                                </form>
+
+                            </div><!--.box bt-3 border-info-->
+                        </div><!--.col-md-12-->
+                    </div><!-- .row -->
+                </div><!-- .box-body -->
+            </div><!--.box-->
+        </section>
+
+
 
 
 	  </div>
