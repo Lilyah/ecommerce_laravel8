@@ -317,6 +317,19 @@ class ProductsController extends Controller
 
     }
 
+    // Admin Delete Product Thumbnail Image
+    public function ProductMultiImageDelete($id){
+        $old_image = MultiImg::findOrFail($id); // detecting the old image
+        unlink($old_image->photo_name); // deleting the image from the folder
+        $old_image->delete(); // deleting the image from db
+
+        $notification = array(
+            'message' => 'Product Thumbnail Deleted successfully',
+            'alert-type' => 'success'
+        );
+                
+        return redirect()->back()->with($notification);     
+    }
 
 
 }
