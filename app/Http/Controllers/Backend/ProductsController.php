@@ -331,5 +331,30 @@ class ProductsController extends Controller
         return redirect()->back()->with($notification);     
     }
 
+    // Admin Activate Product
+    public function ProductActivate($id){
+        Products::findOrFail($id)->update(['status' => 1]);
+
+        $notification = array(
+            'message' => 'Product Activated successfully',
+            'alert-type' => 'success'
+        );
+                
+        return redirect()->back()->with($notification); 
+
+    }
+
+    // Admin Deactivate Product
+    public function ProductDeactivate($id){
+        Products::findOrFail($id)->update(['status' => 0]);
+
+        $notification = array(
+            'message' => 'Product Deactivated successfully',
+            'alert-type' => 'success'
+        );
+                
+        return redirect()->back()->with($notification); 
+
+    }
 
 }

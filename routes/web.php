@@ -96,11 +96,12 @@ Route::prefix('products')->group(function(){
     Route::get('/view', [ProductsController::class, 'ProductsView'])->name('all.products');
     Route::get('/edit/{id}', [ProductsController::class, 'ProductEdit'])->name('product.edit');
     Route::post('/update', [ProductsController::class, 'ProductUpdate'])->name('product.update');
+    Route::get('/delete/{id}', [ProductsController::class, 'ProductDelete'])->name('product.delete');
     Route::post('/multiimage/update', [ProductsController::class, 'ProductMultiImageUpdate'])->name('product.multiimage.update');
     Route::get('/multiimage/delete/{id}', [ProductsController::class, 'ProductMultiImageDelete'])->name('product.multiimage.delete');
     Route::post('/thumbnail/update', [ProductsController::class, 'ProductThumbnailImageUpdate'])->name('product.thumbnail.update');
-
-    Route::get('/delete/{id}', [ProductsController::class, 'ProductDelete'])->name('product.delete');
+    Route::get('/activate/{id}', [ProductsController::class, 'ProductActivate'])->name('product.activate');
+    Route::get('/deactivate/{id}', [ProductsController::class, 'ProductDeactivate'])->name('product.deactivate');
 
 });
 

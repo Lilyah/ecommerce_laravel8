@@ -22,9 +22,11 @@
 						<thead>
 							<tr>
                                 <td>Image</td>
-                                <td>Product Name EN</td>
-								<td>PRoduct Name BG</td>
+                                <td>Product EN</td>
+								<td>Product Price</td>
 								<td>QTY</td>
+								<td>Discount Price</td>
+								<td>Status</td>
 								<td>Action</td>
 							</tr>
 						</thead>
@@ -35,11 +37,28 @@
                                     <img src="{{ asset($product->product_thumbnail) }}" style="height:60px;" alt="">
                                 </td>
 								<td>{{ $product->product_name_en }}</td>
-								<td>{{ $product->product_name_bg }}</td>
+								<td>{{ $product->selling_price }}</td>
 								<td>{{ $product->product_qty }}</td>
+								<td>{{ $product->discount_price }}</td>
 								<td>
+									@if ($product->status == 1)
+										<span class="badge badge-pill badge-success">Active</span>
+									@else
+										<span class="badge badge-pill badge-danger">Inactive</span>
+									@endif
+								</td>
+								<td>
+                                    <a href="" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('product.edit',$product->id) }}" class="btn btn-info" title="Edit"><i class="fa fa-pencil"></i></a>
                                     <a href="" id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a> <!-- id="delete" is needed for SweetAlert2 javascript -->
+
+									@if ($product->status == 1)
+                                    	<a href="{{ route('product.deactivate',$product->id) }}" class="btn btn-danger" title="Deactivate"><i class="fa fa-arrow-down"></i></a>
+									@else
+                                    	<a href="{{ route('product.activate',$product->id) }}" class="btn btn-success" title="Activate"><i class="fa fa-arrow-up"></i></a>
+									@endif
+
+
                                 </td>
 							</tr>
                             @endforeach
