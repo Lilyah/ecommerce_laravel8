@@ -50,7 +50,7 @@
 								<td>
                                     <a href="" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('product.edit',$product->id) }}" class="btn btn-info" title="Edit"><i class="fa fa-pencil"></i></a>
-                                    <a href="" id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a> <!-- id="delete" is needed for SweetAlert2 javascript -->
+                                    <a href="{{ route('product.delete',$product->id) }}" id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a> <!-- id="delete" is needed for SweetAlert2 javascript -->
 
 									@if ($product->status == 1)
                                     	<a href="{{ route('product.deactivate',$product->id) }}" class="btn btn-danger" title="Deactivate"><i class="fa fa-arrow-down"></i></a>

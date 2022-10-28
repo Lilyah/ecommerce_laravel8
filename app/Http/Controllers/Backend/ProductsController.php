@@ -357,4 +357,26 @@ class ProductsController extends Controller
 
     }
 
+    // Admin Delete Product
+    public function ProductDelete($id){
+        $product =  Products::findOrFail($id);
+        unlink($product->product_thumbnail); // deleting the image from the folder
+        $product->delete(); // deleting the product from the db
+
+        // Deleting the multiimages
+        $multiimages = MultiImg::where('product_id',$id)->get(); // when the id from column 'product_id' is matching the product id
+        foreach($multiimages as $multiimage){
+            unlink($multiimage->photo_name);
+            $multiimage->delete();
+        }
+
+        $notification = array(
+            'message' => 'Product Deleted successfully',
+            'alert-type' => 'success'
+        );
+                
+        return redirect()->back()->with($notification); 
+
+    }
+
 }
