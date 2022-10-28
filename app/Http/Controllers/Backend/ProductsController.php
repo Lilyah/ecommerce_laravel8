@@ -149,6 +149,26 @@ class ProductsController extends Controller
         ));
     }
 
+    // Admin View Single Product
+    public function ProductView($id){
+        $product = Products::findOrFail($id);
+        $brand = Brands::where('id', $product->brand_id)->first(); // when the id from table Brands matches the column 'brand_id' from table Products
+        $category = Categories::where('id', $product->category_id)->first(); // when the id from table Categories matches the column 'category_id' from table Products
+        $subcategory = SubCategories::where('id', $product->subcategory_id)->first(); // when the id from table SubCategories matches the column 'subcategory_id' from table Products
+        $subsubcategory = SubSubCategories::where('id', $product->subsubcategory_id)->first(); // when the id from table SubSubCategories matches the column 'subsubcategory_id' from table Products
+
+        $multiimages = MultiImg::where('product_id',$id)->get(); // when the id from column 'product_id' is matching the product id
+
+        return view('backend.products.product_view', compact(
+            'product',
+            'brand',
+            'category',
+            'subcategory',
+            'subsubcategory',
+            'multiimages',
+        ));
+    }
+
     // Admin Edit Product
     public function ProductEdit($id){
         $product = Products::findOrFail($id);

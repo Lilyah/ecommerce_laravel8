@@ -48,7 +48,7 @@
 									@endif
 								</td>
 								<td>
-                                    <a href="" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
+                                    <a href="{{ route('product.view',$product->id) }}" class="btn btn-primary" title="View"><i class="fa fa-eye"></i></a>
                                     <a href="{{ route('product.edit',$product->id) }}" class="btn btn-info" title="Edit"><i class="fa fa-pencil"></i></a>
                                     <a href="{{ route('product.delete',$product->id) }}" id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a> <!-- id="delete" is needed for SweetAlert2 javascript -->
 
