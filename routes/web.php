@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\BrandsController;
 use App\Http\Controllers\Backend\CategoriesController;
 use App\Http\Controllers\Backend\SubCategoriesController;
 use App\Http\Controllers\Backend\ProductsController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -103,6 +104,19 @@ Route::prefix('products')->group(function(){
     Route::post('/thumbnail/update', [ProductsController::class, 'ProductThumbnailImageUpdate'])->name('product.thumbnail.update');
     Route::get('/activate/{id}', [ProductsController::class, 'ProductActivate'])->name('product.activate');
     Route::get('/deactivate/{id}', [ProductsController::class, 'ProductDeactivate'])->name('product.deactivate');
+
+});
+
+
+// Admin Slider
+Route::prefix('slider')->group(function(){
+    Route::get('/view', [SliderController::class, 'SliderView'])->name('manage.slider');
+    Route::post('/store', [SliderController::class, 'SliderStore'])->name('slider.store');
+    Route::get('/edit/{id}', [SliderController::class, 'ProductEdit'])->name('product.edit');
+    Route::post('/update', [SliderController::class, 'ProductUpdate'])->name('product.update');
+    Route::get('/delete/{id}', [SliderController::class, 'ProductDelete'])->name('product.delete');
+
+
 
 });
 
