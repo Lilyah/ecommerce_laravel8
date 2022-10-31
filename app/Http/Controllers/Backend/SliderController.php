@@ -51,4 +51,69 @@ class SliderController extends Controller
     
         return redirect()->back()->with($notification);
     }
+
+    // Admin Edit Slider
+    public function SliderEdit($id){
+        $slider = Slider::findOrFail($id);
+        return view('backend.slider.slider_edit', compact('slider'));
+    }
+
+    // Admin Update Slider
+    public function SliderUpdate(Request $request){
+        $slider_id = $request->id; // it's commit grom slider_edit.blade.php <input type="hidden" HERE>>>>name="id"<<<<<< value="{{ $slider->id }}">
+    
+        $old_image = $request->old_image; // it's commig from slider_edit.blade.php <input type="hidden" HERE>>>>name="old_image"<<<<<< value="{{ $slider->slider_image }}">
+    
+        if ($request->file('slider_image')){ // with image
+            $request->validate([
+                'slider_image' => 'required',
+            ], [
+                'slider_image.required' => 'The field for slider image is required',
+            ]);
+    
+            unlink($old_image);
+    
+            $image = $request->file('slider_image'); // passiing the file
+            $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+            Image::make($image)->resize(870, 370)->save('upload/slider/'.$name_gen);
+            $save_url = 'upload/slider/'.$name_gen;
+    
+            Slider::findOrFail($slider_id)->update([
+                'title_en' => $request->title_en,
+                'title_bg' => $request->title_bg,
+                'slider_slug_en' => strtolower(str_replace(' ', '-', $request->title_en)), // the space will be replaced by -
+                'slider_slug_bg' => strtolower(str_replace(' ', '-', $request->title_bg)),
+                'description_en' => $request->description_en,
+                'description_bg' => $request->description_bg,
+                'slider_image' => $save_url,
+                'updated_at' => Carbon::now(),
+            ]);
+        
+            $notification = array(
+                'message' => 'Slider Updated successfully',
+                'alert-type' => 'success'
+            );
+        
+            return redirect()->route('manage.slider')->with($notification);        
+    
+        } else { //without image   
+            Slider::findOrFail($slider_id)->update([
+                'title_en' => $request->title_en,
+                'title_bg' => $request->title_bg,
+                'slider_slug_en' => strtolower(str_replace(' ', '-', $request->title_en)), // the space will be replaced by -
+                'slider_slug_bg' => strtolower(str_replace(' ', '-', $request->title_bg)),
+                'description_en' => $request->description_en,
+                'description_bg' => $request->description_bg,
+                'updated_at' => Carbon::now(),
+            ]);
+        
+            $notification = array(
+                'message' => 'Slider Updated successfully',
+                'alert-type' => 'success'
+            );
+        
+            return redirect()->route('manage.slider')->with($notification);        
+        }
+    
+    }
 }

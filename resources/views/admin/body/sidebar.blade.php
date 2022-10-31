@@ -100,7 +100,7 @@ $route = Route::current()->getName(); // taking the route name
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ ($route == 'manage.slider') ? 'active' : ''}}">
+              <li class="{{ ($route == 'manage.slider')  || $route == 'slider.edit' ? 'active' : ''}}">
                 <a href="{{ route('manage.slider') }}"><i class="ti-more"></i>Manage Slider</a>
               </li>
             </ul>
