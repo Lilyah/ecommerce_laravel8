@@ -44,7 +44,7 @@ $route = Route::current()->getName(); // taking the route name
               </span>
             </a>
             <ul class="treeview-menu">
-              <li class="{{ ($route == 'all.brands') ? 'active' : ''}}">
+              <li class="{{ ($route == 'all.brands') || $route == 'brand.edit' ? 'active' : ''}}">
                 <a href="{{ route('all.brands') }}"><i class="ti-more"></i>All Brands</a>
               </li>
             </ul>
