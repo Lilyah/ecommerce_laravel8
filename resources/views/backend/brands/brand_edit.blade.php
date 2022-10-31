@@ -46,6 +46,7 @@
 
                             <div class="form-group">
 					    		<h5>Brand Image<span class="text-danger">*</span></h5>
+								<img src="{{ asset($brand->brand_image) }}" class="mb-5" style="width: 70px; height: 40px;">
 					    		<div class="controls">
                                     <input type="file" name="brand_image" class="form-control" id="image"> 
                                     @error('brand_image')
