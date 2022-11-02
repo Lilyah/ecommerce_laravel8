@@ -133,4 +133,36 @@ class SliderController extends Controller
 
         return redirect()->route('manage.slider')->with($notification);   
     }
+
+    // Admin Activate Slider
+    public function SliderActivate($id){
+        Slider::findOrFail($id)->update([
+            'status' => 1,
+            'updated_at' => Carbon::now(),
+        ]);
+    
+        $notification = array(
+            'message' => 'Slider Activated successfully',
+            'alert-type' => 'success'
+        );
+                    
+        return redirect()->back()->with($notification); 
+    
+    }
+    
+     // Admin Deactivate Slider
+     public function SliderDeactivate($id){
+         Slider::findOrFail($id)->update([
+            'status' => 0,
+            'updated_at' => Carbon::now(),
+        ]);
+    
+        $notification = array(
+            'message' => 'Slider Deactivated successfully',
+            'alert-type' => 'success'
+        );
+                    
+        return redirect()->back()->with($notification); 
+    
+    }
 }

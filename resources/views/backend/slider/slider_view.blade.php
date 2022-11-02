@@ -44,6 +44,12 @@
                                 <td>
                                     <a href="{{ route('slider.edit',$image->id) }}" class="btn btn-info" title="Edit"><i class="fa fa-pencil"></i></a>
                                     <a href="{{ route('slider.delete',$image->id) }}" id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a> <!-- id="delete" is needed for SweetAlert2 javascript -->
+
+									@if ($image->status == 1)
+                                    	<a href="{{ route('slider.deactivate',$image->id) }}" class="btn btn-danger" title="Deactivate"><i class="fa fa-arrow-down"></i></a>
+									@else
+                                    	<a href="{{ route('slider.activate',$image->id) }}" class="btn btn-success" title="Activate"><i class="fa fa-arrow-up"></i></a>
+									@endif
                                 </td>
 							</tr>
                             @endforeach
