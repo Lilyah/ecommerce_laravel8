@@ -116,4 +116,21 @@ class SliderController extends Controller
         }
     
     }
+
+    // Admin Delete Slider
+    public function SliderDelete($id){
+        $slider = Slider::findOrFail($id);
+        $slider_image = $slider->slider_image;
+
+        unlink($slider_image); // deleting the image from the folder
+
+        $slider->delete(); // deleting the data from the db
+
+        $notification = array(
+            'message' => 'Slider Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('manage.slider')->with($notification);   
+    }
 }

@@ -43,7 +43,7 @@
 								</td>								
                                 <td>
                                     <a href="{{ route('slider.edit',$image->id) }}" class="btn btn-info" title="Edit"><i class="fa fa-pencil"></i></a>
-                                    <a href="" id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a> <!-- id="delete" is needed for SweetAlert2 javascript -->
+                                    <a href="{{ route('slider.delete',$image->id) }}" id="delete" class="btn btn-danger" title="Delete"><i class="fa fa-trash"></i></a> <!-- id="delete" is needed for SweetAlert2 javascript -->
                                 </td>
 							</tr>
                             @endforeach
