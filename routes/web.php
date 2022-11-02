@@ -38,87 +38,88 @@ Route::group(['prefix'=>'admin', 'middleware'=>['admin:admin']], function(){
     Route::post('/login', [AdminController::class, 'store'])->name('admin.login');
 });
 
-// Admin Logout
-Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
+Route::middleware(['auth:admin'])->group(function(){ // Auth for only admins to access
 
-// Admin Dashboard 
-Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-    return view('admin.index');
-})->name('dashboard');
+    // Admin Logout
+    Route::get('/admin/logout', [AdminController::class, 'destroy'])->name('admin.logout');
 
-// Admin Profile
-Route::get('/admin/profile', [AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
-Route::get('/admin/profile/edit', [AdminProfileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
-Route::post('/admin/profile/store', [AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
-Route::get('/admin/change_password', [AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
-Route::post('/admin/change_password/update', [AdminProfileController::class, 'AdminUpdatePassword'])->name('admin.update.password');
+    // Admin Dashboard 
+    Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
+        return view('admin.index');
+    })->name('dashboard')->middleware('auth:admin');
 
-// Admin Brands
-Route::prefix('brands')->group(function(){
-    Route::get('/view', [BrandsController::class, 'BrandsView'])->name('all.brands');
-    Route::post('/store', [BrandsController::class, 'BrandStore'])->name('brand.store');
-    Route::get('/edit/{id}', [BrandsController::class, 'BrandEdit'])->name('brand.edit');
-    Route::post('/update', [BrandsController::class, 'BrandUpdate'])->name('brand.update');
-    Route::get('/delete/{id}', [BrandsController::class, 'BrandDelete'])->name('brand.delete');
-});
+    // Admin Profile
+    Route::get('/admin/profile', [AdminProfileController::class, 'AdminProfile'])->name('admin.profile');
+    Route::get('/admin/profile/edit', [AdminProfileController::class, 'AdminProfileEdit'])->name('admin.profile.edit');
+    Route::post('/admin/profile/store', [AdminProfileController::class, 'AdminProfileStore'])->name('admin.profile.store');
+    Route::get('/admin/change_password', [AdminProfileController::class, 'AdminChangePassword'])->name('admin.change.password');
+    Route::post('/admin/change_password/update', [AdminProfileController::class, 'AdminUpdatePassword'])->name('admin.update.password');
 
-
-// Admin Categories
-Route::prefix('categories')->group(function(){
-    Route::get('/view', [CategoriesController::class, 'CategoriesView'])->name('all.categories');
-    Route::post('/store', [CategoriesController::class, 'CategoryStore'])->name('category.store');
-    Route::get('/edit/{id}', [CategoriesController::class, 'CategoryEdit'])->name('category.edit');
-    Route::post('/update', [CategoriesController::class, 'CategoryUpdate'])->name('category.update');
-    Route::get('/delete/{id}', [CategoriesController::class, 'CategoryDelete'])->name('category.delete');
-
-    // Admin Subcategories
-    Route::get('/sub/view', [SubCategoriesController::class, 'SubCategoriesView'])->name('all.subcategories');
-    Route::post('/sub/store', [SubCategoriesController::class, 'SubCategoryStore'])->name('subcategory.store');
-    Route::get('/sub/edit/{id}', [SubCategoriesController::class, 'SubCategoryEdit'])->name('subcategory.edit');
-    Route::post('/sub/update', [SubCategoriesController::class, 'SubCategoryUpdate'])->name('subcategory.update');
-    Route::get('/sub/delete/{id}', [SubCategoriesController::class, 'SubCategoryDelete'])->name('subcategory.delete');
-
-    // Admin Subsubcategories
-    Route::get('/sub/sub/view', [SubCategoriesController::class, 'SubSubCategoriesView'])->name('all.subsubcategories');
-    Route::post('/sub/sub/store', [SubCategoriesController::class, 'SubSubCategoryStore'])->name('subsubcategory.store');
-    Route::get('/sub/sub/edit/{id}', [SubCategoriesController::class, 'SubSubCategoryEdit'])->name('subsubcategory.edit');
-    Route::post('/sub/sub/update', [SubCategoriesController::class, 'SubSubCategoryUpdate'])->name('subsubcategory.update');
-    Route::get('/sub/sub/delete/{id}', [SubCategoriesController::class, 'SubSubCategoryDelete'])->name('subsubcategory.delete');
-    Route::get('/subcategory/ajax/{category_id}', [SubCategoriesController::class, 'GetSubCategory']); // for the ajax in subsubcategory_view.blade for add SubSubcategory
-    Route::get('/subsubcategory/ajax/{subcategory_id}', [SubCategoriesController::class, 'GetSubSubCategory']); // for the ajax in subsubcategory_view.blade for 'Add new product'
-
-});
+    // Admin Brands
+    Route::prefix('brands')->group(function(){
+        Route::get('/view', [BrandsController::class, 'BrandsView'])->name('all.brands');
+        Route::post('/store', [BrandsController::class, 'BrandStore'])->name('brand.store');
+        Route::get('/edit/{id}', [BrandsController::class, 'BrandEdit'])->name('brand.edit');
+        Route::post('/update', [BrandsController::class, 'BrandUpdate'])->name('brand.update');
+        Route::get('/delete/{id}', [BrandsController::class, 'BrandDelete'])->name('brand.delete');
+    }); // .Route::prefix('brands')
 
 
-// Admin Products
-Route::prefix('products')->group(function(){
-    Route::get('/add', [ProductsController::class, 'AddProduct'])->name('add.product');
-    Route::post('/store', [ProductsController::class, 'ProductStore'])->name('product.store');
-    Route::get('/view', [ProductsController::class, 'ProductsView'])->name('all.products');
-    Route::get('/view/{id}', [ProductsController::class, 'ProductView'])->name('product.view');
-    Route::get('/edit/{id}', [ProductsController::class, 'ProductEdit'])->name('product.edit');
-    Route::post('/update', [ProductsController::class, 'ProductUpdate'])->name('product.update');
-    Route::get('/delete/{id}', [ProductsController::class, 'ProductDelete'])->name('product.delete');
-    Route::post('/multiimage/update', [ProductsController::class, 'ProductMultiImageUpdate'])->name('product.multiimage.update');
-    Route::get('/multiimage/delete/{id}', [ProductsController::class, 'ProductMultiImageDelete'])->name('product.multiimage.delete');
-    Route::post('/thumbnail/update', [ProductsController::class, 'ProductThumbnailImageUpdate'])->name('product.thumbnail.update');
-    Route::get('/activate/{id}', [ProductsController::class, 'ProductActivate'])->name('product.activate');
-    Route::get('/deactivate/{id}', [ProductsController::class, 'ProductDeactivate'])->name('product.deactivate');
+    // Admin Categories
+    Route::prefix('categories')->group(function(){
+        Route::get('/view', [CategoriesController::class, 'CategoriesView'])->name('all.categories');
+        Route::post('/store', [CategoriesController::class, 'CategoryStore'])->name('category.store');
+        Route::get('/edit/{id}', [CategoriesController::class, 'CategoryEdit'])->name('category.edit');
+        Route::post('/update', [CategoriesController::class, 'CategoryUpdate'])->name('category.update');
+        Route::get('/delete/{id}', [CategoriesController::class, 'CategoryDelete'])->name('category.delete');
 
-});
+        // Admin Subcategories
+        Route::get('/sub/view', [SubCategoriesController::class, 'SubCategoriesView'])->name('all.subcategories');
+        Route::post('/sub/store', [SubCategoriesController::class, 'SubCategoryStore'])->name('subcategory.store');
+        Route::get('/sub/edit/{id}', [SubCategoriesController::class, 'SubCategoryEdit'])->name('subcategory.edit');
+        Route::post('/sub/update', [SubCategoriesController::class, 'SubCategoryUpdate'])->name('subcategory.update');
+        Route::get('/sub/delete/{id}', [SubCategoriesController::class, 'SubCategoryDelete'])->name('subcategory.delete');
+
+        // Admin Subsubcategories
+        Route::get('/sub/sub/view', [SubCategoriesController::class, 'SubSubCategoriesView'])->name('all.subsubcategories');
+        Route::post('/sub/sub/store', [SubCategoriesController::class, 'SubSubCategoryStore'])->name('subsubcategory.store');
+        Route::get('/sub/sub/edit/{id}', [SubCategoriesController::class, 'SubSubCategoryEdit'])->name('subsubcategory.edit');
+        Route::post('/sub/sub/update', [SubCategoriesController::class, 'SubSubCategoryUpdate'])->name('subsubcategory.update');
+        Route::get('/sub/sub/delete/{id}', [SubCategoriesController::class, 'SubSubCategoryDelete'])->name('subsubcategory.delete');
+        Route::get('/subcategory/ajax/{category_id}', [SubCategoriesController::class, 'GetSubCategory']); // for the ajax in subsubcategory_view.blade for add SubSubcategory
+        Route::get('/subsubcategory/ajax/{subcategory_id}', [SubCategoriesController::class, 'GetSubSubCategory']); // for the ajax in subsubcategory_view.blade for 'Add new product'
+    }); // .Route::prefix('categories')
 
 
-// Admin Slider
-Route::prefix('slider')->group(function(){
-    Route::get('/view', [SliderController::class, 'SliderView'])->name('manage.slider');
-    Route::post('/store', [SliderController::class, 'SliderStore'])->name('slider.store');
-    Route::get('/edit/{id}', [SliderController::class, 'SliderEdit'])->name('slider.edit');
-    Route::post('/update', [SliderController::class, 'SliderUpdate'])->name('slider.update');
-    Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
-    Route::get('/activate/{id}', [SliderController::class, 'SliderActivate'])->name('slider.activate');
-    Route::get('/deactivate/{id}', [SliderController::class, 'SliderDeactivate'])->name('slider.deactivate');
-});
+    // Admin Products
+    Route::prefix('products')->group(function(){
+        Route::get('/add', [ProductsController::class, 'AddProduct'])->name('add.product');
+        Route::post('/store', [ProductsController::class, 'ProductStore'])->name('product.store');
+        Route::get('/view', [ProductsController::class, 'ProductsView'])->name('all.products');
+        Route::get('/view/{id}', [ProductsController::class, 'ProductView'])->name('product.view');
+        Route::get('/edit/{id}', [ProductsController::class, 'ProductEdit'])->name('product.edit');
+        Route::post('/update', [ProductsController::class, 'ProductUpdate'])->name('product.update');
+        Route::get('/delete/{id}', [ProductsController::class, 'ProductDelete'])->name('product.delete');
+        Route::post('/multiimage/update', [ProductsController::class, 'ProductMultiImageUpdate'])->name('product.multiimage.update');
+        Route::get('/multiimage/delete/{id}', [ProductsController::class, 'ProductMultiImageDelete'])->name('product.multiimage.delete');
+        Route::post('/thumbnail/update', [ProductsController::class, 'ProductThumbnailImageUpdate'])->name('product.thumbnail.update');
+        Route::get('/activate/{id}', [ProductsController::class, 'ProductActivate'])->name('product.activate');
+        Route::get('/deactivate/{id}', [ProductsController::class, 'ProductDeactivate'])->name('product.deactivate');
+    }); // Route::prefix('products')
 
+
+    // Admin Slider
+    Route::prefix('slider')->group(function(){
+        Route::get('/view', [SliderController::class, 'SliderView'])->name('manage.slider');
+        Route::post('/store', [SliderController::class, 'SliderStore'])->name('slider.store');
+        Route::get('/edit/{id}', [SliderController::class, 'SliderEdit'])->name('slider.edit');
+        Route::post('/update', [SliderController::class, 'SliderUpdate'])->name('slider.update');
+        Route::get('/delete/{id}', [SliderController::class, 'SliderDelete'])->name('slider.delete');
+        Route::get('/activate/{id}', [SliderController::class, 'SliderActivate'])->name('slider.activate');
+        Route::get('/deactivate/{id}', [SliderController::class, 'SliderDeactivate'])->name('slider.deactivate');
+    }); // .Route::prefix('slider')
+
+}); // end Route::middleware(['auth:admin'])->group(function(){.......});
 
 
 
