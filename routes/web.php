@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\SubCategoriesController;
 use App\Http\Controllers\Backend\ProductsController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\LanguageController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
@@ -146,3 +147,15 @@ Route::post('/user/profile/store', [IndexController::class, 'UserProfileStore'])
 Route::get('/user/change_password', [IndexController::class, 'UserChangePassword'])->name('user.change.password');
 Route::post('/user/change_password/store', [IndexController::class, 'UserChangePasswordStore'])->name('user.change.password.store');
 
+
+
+
+/*
+|--------------------------------------------------------------------------
+| Frontend Routes
+|--------------------------------------------------------------------------
+*/
+
+// Multi Language
+Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
+Route::get('/language/bulgarian', [LanguageController::class, 'Bulgarian'])->name('bulgarian.language');

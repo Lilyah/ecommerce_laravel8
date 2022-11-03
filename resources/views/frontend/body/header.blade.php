@@ -6,6 +6,8 @@
       <div class="header-top-inner">
         <div class="cnt-account">
           <ul class="list-unstyled">
+
+          @if (session()->get('language') == 'english') 
             <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
             <li><a href="#"><i class="icon fa fa-heart"></i>Wishlist</a></li>
             <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
@@ -19,6 +21,24 @@
             @else 
               <li><a href="{{ route('login') }}"><i class="icon fa fa-lock"></i>Login/Register</a></li>
             @endauth
+
+
+          @else
+            <li><a href="#"><i class="icon fa fa-user"></i>Моят Акаунт</a></li>
+            <li><a href="#"><i class="icon fa fa-heart"></i>Любими</a></li>
+            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>Количка</a></li>
+            <li><a href="#"><i class="icon fa fa-check"></i>Плащане</a></li>
+
+            <!-- If the user is loged in it's going to show the sign 'User Profile'
+            -- If its not it's going to show the sign 'Login/Register
+            -->
+            @auth
+              <li><a href="{{ route('dashboard') }}"><i class="icon fa fa-user"></i>Профил</a></li>
+            @else 
+              <li><a href="{{ route('login') }}"><i class="icon fa fa-lock"></i>Вход/Регистрация</a></li>
+            @endauth
+          @endif
+      
           </ul>
         </div>
         <!-- /.cnt-account -->
@@ -32,11 +52,19 @@
                 <li><a href="#">GBP</a></li>
               </ul>
             </li>
-            <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">English </span><b class="caret"></b></a>
+            <li class="dropdown dropdown-small"> <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">
+              @if (session()->get('language') == 'english') 
+                Language 
+              @else 
+                Език 
+              @endif
+             </span><b class="caret"></b></a>
               <ul class="dropdown-menu">
-                <li><a href="#">English</a></li>
-                <li><a href="#">French</a></li>
-                <li><a href="#">German</a></li>
+                @if (session()->get('language') == 'bulgarian')
+                  <li><a href="{{ route('english.language') }}"><span class="fi fi-gb"></span> English</a></li>
+                @else
+                  <li><a href="{{ route('bulgarian.language') }}"><span class="fi fi-bg"></span> Български</a></li>
+                @endif
               </ul>
             </li>
           </ul>
