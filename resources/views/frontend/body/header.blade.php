@@ -176,33 +176,115 @@
           <div class="navbar-collapse collapse" id="mc-horizontal-menu-collapse">
             <div class="nav-outer">
               <ul class="nav navbar-nav">
-                <li class="active dropdown yamm-fw"> <a href="{{ url('/') }}" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Home</a> </li>
-                <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">Clothing</a>
-                  <ul class="dropdown-menu container">
-                    <li>
-                      <div class="yamm-content ">
-                        <div class="row">
-                          <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                            <h2 class="title">Men</h2>
-                            <ul class="links">
-                              <li><a href="#">Dresses</a></li>
-                              <li><a href="#">Shoes </a></li>
-                              <li><a href="#">Jackets</a></li>
-                              <li><a href="#">Sunglasses</a></li>
-                              <li><a href="#">Sport Wear</a></li>
-                              <li><a href="#">Blazers</a></li>
-                              <li><a href="#">Shirts</a></li>
-                            </ul>
-                          </div>
-                          <!-- /.col -->
-                          
-                          <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/top-menu-banner.jpg') }}" alt=""> </div>
-                          <!-- /.yamm-content --> 
-                        </div>
-                      </div>
-                    </li>
-                  </ul>
+               
+
+                <li class="active dropdown yamm-fw"> 
+                  <a href="{{ url('/') }}" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">
+                    @if (session()->get('language') == 'english') Home @else Главна страница @endif 
+                  </a>
                 </li>
+                
+                <!-- Access to the Categories Model -->
+                @php
+                $categories = App\Models\Categories::orderBy('category_name_en', 'ASC')->get();
+                @endphp
+
+                @if (session()->get('language') == 'english') 
+
+                <!-- English Language -->
+                  @foreach($categories as $category)               
+                    <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">{{ $category->category_name_en}}</a>
+                      <ul class="dropdown-menu container">
+                        <li>
+                          <div class="yamm-content ">
+                            <div class="row">
+
+                            <!-- Access to the SubCategories Model -->
+                            @php
+                            $subcategories = App\Models\SubCategories::where('category_id',$category->id)->orderBy('subcategory_name_en', 'ASC')->get();
+                            @endphp
+
+                            @foreach ($subcategories as $subcategory)
+                              
+                              <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                                <h2 class="title">{{ $subcategory->subcategory_name_en }}</h2>
+
+                                <!-- Access to the SubSubCategories Model -->
+                                @php
+                                $subsubcategories = App\Models\SubSubCategories::where('subcategory_id',$subcategory->id)->orderBy('subsubcategory_name_en', 'ASC')->get();
+                                @endphp
+
+                                @foreach ($subsubcategories as $subsubcategory)
+
+                                <ul class="links">
+                                  <li><a href="#">{{ $subsubcategory->subsubcategory_name_en }}</a></li>
+                                </ul>
+
+                                @endforeach
+                              </div>
+                              <!-- /.col -->
+
+                            @endforeach
+
+                              
+                              <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/top-menu-banner.jpg') }}" alt=""> </div>
+                              <!-- /.yamm-content --> 
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+                  @endforeach
+
+                @else
+
+                <!-- Bulgarian Language -->
+                  @foreach($categories as $category)               
+                    <li class="dropdown yamm mega-menu"> <a href="home.html" data-hover="dropdown" class="dropdown-toggle" data-toggle="dropdown">{{ $category->category_name_bg}}</a>
+                      <ul class="dropdown-menu container">
+                        <li>
+                          <div class="yamm-content ">
+                            <div class="row">
+
+                            <!-- Access to the SubCategories Model -->
+                            @php
+                            $subcategories = App\Models\SubCategories::where('category_id',$category->id)->orderBy('subcategory_name_bg', 'ASC')->get();
+                            @endphp
+
+                            @foreach ($subcategories as $subcategory)
+                              
+                              <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                                <h2 class="title">{{ $subcategory->subcategory_name_bg }}</h2>
+
+                                <!-- Access to the SubSubCategories Model -->
+                                @php
+                                $subsubcategories = App\Models\SubSubCategories::where('subcategory_id',$subcategory->id)->orderBy('subsubcategory_name_bg', 'ASC')->get();
+                                @endphp
+
+                                @foreach ($subsubcategories as $subsubcategory)
+
+                                <ul class="links">
+                                  <li><a href="#">{{ $subsubcategory->subsubcategory_name_bg }}</a></li>
+                                </ul>
+
+                                @endforeach
+                              </div>
+                              <!-- /.col -->
+
+                            @endforeach
+
+                              
+                              <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image"> <img class="img-responsive" src="{{ asset('frontend/assets/images/banners/top-menu-banner.jpg') }}" alt=""> </div>
+                              <!-- /.yamm-content --> 
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </li>
+                  @endforeach
+                
+                @endif
+
                 <li class="dropdown  navbar-right special-menu"> <a href="#">Todays offer</a> </li>
               </ul>
               <!-- /.navbar-nav -->
