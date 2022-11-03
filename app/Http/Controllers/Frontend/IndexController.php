@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Categories;
+use App\Models\SubCategories;
+use App\Models\SubSubCategories;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 
@@ -12,7 +15,15 @@ class IndexController extends Controller
 {
     // Load Home Page
     public function index(){
-        return view('frontend.index');
+        $categories = Categories::orderBy('category_name_en', 'ASC')->get();
+        $subcategories = SubCategories::latest()->get(); //getting all data from the DB
+        $subsubcategories = SubSubCategories::latest()->get(); //getting all data from the DB
+
+        return view('frontend.index', compact(
+            'categories',
+            'subcategories',
+            'subsubcategories'
+        ));
     }
 
     // User Logout
