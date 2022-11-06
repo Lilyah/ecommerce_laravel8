@@ -9,6 +9,7 @@ use App\Models\Categories;
 use App\Models\SubCategories;
 use App\Models\SubSubCategories;
 use App\Models\User;
+use App\Models\Slider;
 use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
@@ -16,9 +17,11 @@ class IndexController extends Controller
     // Load Home Page
     public function index(){
         $categories = Categories::orderBy('category_name_en', 'ASC')->get();
+        $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->get(); // getting active sliders
 
         return view('frontend.index', compact(
             'categories',
+            'sliders',
         ));
     }
 
