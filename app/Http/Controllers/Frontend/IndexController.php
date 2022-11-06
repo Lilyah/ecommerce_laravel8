@@ -16,13 +16,9 @@ class IndexController extends Controller
     // Load Home Page
     public function index(){
         $categories = Categories::orderBy('category_name_en', 'ASC')->get();
-        $subcategories = SubCategories::latest()->get(); //getting all data from the DB
-        $subsubcategories = SubSubCategories::latest()->get(); //getting all data from the DB
 
         return view('frontend.index', compact(
             'categories',
-            'subcategories',
-            'subsubcategories'
         ));
     }
 
