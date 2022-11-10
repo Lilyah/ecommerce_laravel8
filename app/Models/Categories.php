@@ -16,4 +16,9 @@ class Categories extends Model
         'category_slug_bg',
         'category_icon',
     ];
+
+        // Relationship with Products table
+        public function products(){
+            return $this->belongsTo(Products::class,'id','category_id');
+        }
 }

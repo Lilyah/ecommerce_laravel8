@@ -10,4 +10,11 @@ class Products extends Model
     use HasFactory;
 
     protected $guarded = []; // with $guarded we don't need $fillable
+
+    // Relationship with Categories table
+    public function category(){
+        return $this->belongsTo(Categories::class,'category_id','id');
+    }
+
+
 }

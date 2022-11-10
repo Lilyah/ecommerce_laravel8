@@ -10,18 +10,25 @@ use App\Models\SubCategories;
 use App\Models\SubSubCategories;
 use App\Models\User;
 use App\Models\Slider;
+use App\Models\Products;
 use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
 {
     // Load Home Page
     public function index(){
-        $categories = Categories::orderBy('category_name_en', 'ASC')->get();
+        //$categories = Categories::orderBy('category_name_en', 'ASC')->get();
         $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->get(); // getting active sliders
+        $products = Products::where('status', 1)->orderBy('created_at', 'DESC')->get(); // getting active products 
+
+        // Retrieve all categories that have at least one product
+        // For has('products') you need the relationship categories-products in Categories model
+        $categories = Categories::has('products')->orderBy('category_name_en', 'ASC')->get();
 
         return view('frontend.index', compact(
             'categories',
             'sliders',
+            'products',
         ));
     }
 
