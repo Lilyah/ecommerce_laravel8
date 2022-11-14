@@ -20,7 +20,7 @@
                 <nav class="yamm megamenu-horizontal">
                   <ul class="nav">
 
-                    @foreach ($categories as $category)
+                    @foreach ($categories_all as $category)
               
                       <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="{{ $category->category_icon }}"></i> {{ $category->category_name_en}}</a>
                         <ul class="dropdown-menu mega-menu">
@@ -71,7 +71,7 @@
                 <nav class="yamm megamenu-horizontal">
                   <ul class="nav">
 
-                    @foreach ($categories as $category)
+                    @foreach ($categories_all as $category)
               
                       <li class="dropdown menu-item"> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="{{ $category->category_icon }}"></i> {{ $category->category_name_bg}}</a>
                         <ul class="dropdown-menu mega-menu">
@@ -982,13 +982,13 @@
         <!-- ============================================== SCROLL TABS ============================================== -->
         <div id="product-tabs-slider" class="scroll-tabs outer-top-vs wow fadeInUp">
           <div class="more-info-tab clearfix ">
-            <h3 class="new-product-title pull-left">New Products</h3>
+            <h3 class="new-product-title pull-left">{{ (session()->get('language') == 'english') ? 'New Products' : 'Нови Продукти' }}</h3>
             <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
-              <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">All</a></li>
+              <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">{{ (session()->get('language') == 'english') ? 'All' : 'Всички' }}</a></li>
 
               @foreach ($categories as $category)
                
-                <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name_en }}</a></li>
+                <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ (session()->get('language') == 'english') ? $category->category_name_en : $category->category_name_bg }}</a></li>
 
               @endforeach
 
@@ -1017,14 +1017,28 @@
                                 <a href="detail.html"><img  src="{{ asset($product->product_thumbnail) }}" alt=""></a>
                               </div><!-- /.image -->
                               
-                              <div class="tag new"><span>{{ (session()->get('language') == 'english') ? 'new' : 'ново' }}</span></div>
+                              @php
+                                $amount = $product->selling_price - $product->discount_price;
+                                $discount = ($amount / $product->selling_price) * 100;
+                              @endphp
+
+                              @if (session()->get('language') == 'english')
+                                <div class="tag {{ ( !empty($product->discount_price) ) ? 'hot' : 'new' }}"><span>{{ ( !empty($product->discount_price) ) ? round($discount).'%' : 'new' }}</span></div>
+                                @else
+                                <div class="tag {{ ( !empty($product->discount_price) ) ? 'hot' : 'new' }}"><span>{{ ( !empty($product->discount_price) ) ? round($discount).'%' : 'ново' }}</span></div>
+                              @endif
                             </div><!-- /.product-image -->
                             
                             <div class="product-info text-left">
                               <h3 class="name"><a href="detail.html">{{ (session()->get('language') == 'english') ? $product->product_name_en : $product->product_name_bg }}</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="description"></div>
-                              <div class="product-price"> <span class="price">${{ $product->discount_price }}</span> <span class="price-before-discount">${{ $product->selling_price }}</span> </div>
+                                @if (!empty($product->discount_price))
+                                  <div class="product-price"> <span class="price">${{ $product->discount_price }}</span> <span class="price-before-discount">${{ $product->selling_price }}</span> </div>
+
+                                @else
+                                    <div class="product-price"> <span class="price">${{ $product->selling_price }}</span></div>
+                                @endif
                             </div><!-- /.product-info -->
                             
                             <div class="cart clearfix animate-effect">
@@ -1077,15 +1091,29 @@
                                   <div class="image"> 
                                     <a href="detail.html"><img  src="{{ asset($product->product_thumbnail) }}" alt=""></a>
                                   </div><!-- /.image -->
-                                  
-                                  <div class="tag new"><span>{{ (session()->get('language') == 'english') ? 'new' : 'ново' }}</span></div>
+                                  @php
+                                  $amount = $product->selling_price - $product->discount_price;
+                                  $discount = ($amount / $product->selling_price) * 100;
+                                  @endphp
+
+                                  @if (session()->get('language') == 'english')
+                                    <div class="tag {{ ( !empty($product->discount_price) ) ? 'hot' : 'new' }}"><span>{{ !empty($product->discount_price) ? round($discount).'%' : 'new' }}</span></div>
+                                  @else
+                                    <div class="tag {{ ( !empty($product->discount_price) ) ? 'hot' : 'new' }}"><span>{{ !empty($product->discount_price) ? round($discount).'%' : 'ново' }}</span></div>
+                                  @endif
                                 </div><!-- /.product-image -->
                                 
                                 <div class="product-info text-left">
                                   <h3 class="name"><a href="detail.html">{{ (session()->get('language') == 'english') ? $product->product_name_en : $product->product_name_bg }}</a></h3>
                                   <div class="rating rateit-small"></div>
                                   <div class="description"></div>
-                                  <div class="product-price"> <span class="price">${{ $product->discount_price }}</span> <span class="price-before-discount">${{ $product->selling_price }}</span> </div>
+
+                                    @if (!empty($product->discount_price))
+                                      <div class="product-price"> <span class="price">${{ $product->discount_price }}</span> <span class="price-before-discount">${{ $product->selling_price }}</span> </div>
+                                    @else
+                                      <div class="product-price"> <span class="price">${{ $product->selling_price }}</span></div>
+                                    @endif                               
+
                                 </div><!-- /.product-info -->
                                 
                                 <div class="cart clearfix animate-effect">
