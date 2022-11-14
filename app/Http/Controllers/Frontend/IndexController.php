@@ -17,7 +17,7 @@ class IndexController extends Controller
 {
     // Load Home Page
     public function index(){
-        //$categories = Categories::orderBy('category_name_en', 'ASC')->get();
+        $categories_all = Categories::orderBy('category_name_en', 'ASC')->get();
         $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->get(); // getting active sliders
         $products = Products::where('status', 1)->orderBy('created_at', 'DESC')->get(); // getting active products 
 
@@ -27,6 +27,7 @@ class IndexController extends Controller
 
         return view('frontend.index', compact(
             'categories',
+            'categories_all',
             'sliders',
             'products',
         ));
