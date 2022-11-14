@@ -85,8 +85,8 @@ class ProductsController extends Controller
 
             'product_name_en' => $request->product_name_en,
             'product_name_bg' => $request->product_name_bg,
-            'product_slug_en' => strtolower(str_replace(' ', '-', $request->product_name_en)), // the space will be replaced by -
-            'product_slug_bg' => strtolower(str_replace(' ', '-', $request->product_name_bg)),
+            'product_slug_en' => strtolower(preg_replace("/[^a-zA-Z0-9]/", '-', $request->product_name_en)), // the space and some symbols will be replaced by -
+            'product_slug_bg' => strtolower(preg_replace("/[^a-zA-Z0-9]/", '-', $request->product_name_bg)),
             'product_code' => $request->product_code,
             'product_qty' => $request->product_qty,
             'product_tags_en' => $request->product_tags_en,
@@ -242,8 +242,8 @@ class ProductsController extends Controller
 
             'product_name_en' => $request->product_name_en,
             'product_name_bg' => $request->product_name_bg,
-            'product_slug_en' => strtolower(str_replace(' ', '-', $request->product_name_en)), // the space will be replaced by -
-            'product_slug_bg' => strtolower(str_replace(' ', '-', $request->product_name_bg)),
+            'product_slug_en' => strtolower(preg_replace("/[^a-zA-Z0-9]/", '-', $request->product_name_en)), // the space and some symbols will be replaced by -
+            'product_slug_bg' => strtolower(preg_replace("/[^a-zA-Z0-9]/", '-', $request->product_name_bg)),
             'product_code' => $request->product_code,
             'product_qty' => $request->product_qty,
             'product_tags_en' => $request->product_tags_en,
