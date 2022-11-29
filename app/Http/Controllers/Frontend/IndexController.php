@@ -11,6 +11,7 @@ use App\Models\SubSubCategories;
 use App\Models\User;
 use App\Models\Slider;
 use App\Models\Products;
+use App\Models\MultiImg;
 use Illuminate\Support\Facades\Hash;
 
 class IndexController extends Controller
@@ -105,5 +106,16 @@ class IndexController extends Controller
             } else {
                 return redirect()->back();
             };
+    }
+
+    // Product Details
+    public function ProductDetails($id,$slug_en){
+        $product = Products::findOrFail($id);
+        $multiimages = MultiImg::where('product_id',$id)->get(); // when the id from column 'product_id' is matching the product id
+
+        return view('frontend.products.product_details', compact(
+            'product',
+            'multiimages',
+        ));
     }
 }

@@ -159,3 +159,6 @@ Route::post('/user/change_password/store', [IndexController::class, 'UserChangeP
 // Multi Language
 Route::get('/language/english', [LanguageController::class, 'English'])->name('english.language');
 Route::get('/language/bulgarian', [LanguageController::class, 'Bulgarian'])->name('bulgarian.language');
+
+// Product Details
+Route::get('/product/details/{id}/{slug_en}', [IndexController::class, 'ProductDetails']); // don't need name, because it has been use by url('...')

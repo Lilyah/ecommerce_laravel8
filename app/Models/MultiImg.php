@@ -11,4 +11,8 @@ class MultiImg extends Model
 
     protected $guarded = []; // with $guarded we don't need $fillable
 
+    // Relationship with Products table
+    public function product(){
+        return $this->belongsTo(Products::class,'product_id','id');
+    }
 }

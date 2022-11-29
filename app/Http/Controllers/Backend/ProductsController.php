@@ -12,6 +12,8 @@ use App\Models\MultiImg;
 use Image;
 use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
 
 class ProductsController extends Controller
 {
@@ -86,7 +88,7 @@ class ProductsController extends Controller
             'product_name_en' => $request->product_name_en,
             'product_name_bg' => $request->product_name_bg,
             'product_slug_en' => strtolower(preg_replace("/[^a-zA-Z0-9]/", '-', $request->product_name_en)), // the space and some symbols will be replaced by -
-            'product_slug_bg' => strtolower(preg_replace("/[^a-zA-Z0-9]/", '-', $request->product_name_bg)),
+            'product_slug_bg' => Str::of($request->product_name_bg)->slug('-'), // transforms the utf-8 charecters into english
             'product_code' => $request->product_code,
             'product_qty' => $request->product_qty,
             'product_tags_en' => $request->product_tags_en,
@@ -243,7 +245,7 @@ class ProductsController extends Controller
             'product_name_en' => $request->product_name_en,
             'product_name_bg' => $request->product_name_bg,
             'product_slug_en' => strtolower(preg_replace("/[^a-zA-Z0-9]/", '-', $request->product_name_en)), // the space and some symbols will be replaced by -
-            'product_slug_bg' => strtolower(preg_replace("/[^a-zA-Z0-9]/", '-', $request->product_name_bg)),
+            'product_slug_bg' => Str::of($request->product_name_bg)->slug('-'), // transforms the utf-8 charecters into english
             'product_code' => $request->product_code,
             'product_qty' => $request->product_qty,
             'product_tags_en' => $request->product_tags_en,

@@ -1,5 +1,15 @@
 @extends('frontend.frontend_master')
 
+
+
+@section('page_title')
+
+{{ (session()->get('language') == 'english') ? 'Ecommerce System' : 'Онлайн Магазин'; }}
+
+@endsection
+
+
+
 @section('content')
 
 <div class="body-content outer-top-xs" id="top-banner-and-menu">
@@ -1014,7 +1024,7 @@
 
                             <div class="product-image">
                               <div class="image"> 
-                                <a href="detail.html"><img  src="{{ asset($product->product_thumbnail) }}" alt=""></a>
+                                <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}"><img  src="{{ asset($product->product_thumbnail) }}" alt=""></a>
                               </div><!-- /.image -->
                               
                               @php
@@ -1030,7 +1040,7 @@
                             </div><!-- /.product-image -->
                             
                             <div class="product-info text-left">
-                              <h3 class="name"><a href="detail.html">{{ (session()->get('language') == 'english') ? $product->product_name_en : $product->product_name_bg }}</a></h3>
+                              <h3 class="name"><a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug_en) }}">{{ (session()->get('language') == 'english') ? $product->product_name_en : $product->product_name_bg }}</a></h3>
                               <div class="rating rateit-small"></div>
                               <div class="description"></div>
                                 @if (!empty($product->discount_price))

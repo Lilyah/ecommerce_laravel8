@@ -8,7 +8,7 @@
 <meta name="author" content="">
 <meta name="keywords" content="eCommerce">
 <meta name="robots" content="all">
-<title>Ecommerce System</title>
+<title>@yield('page_title')</title>
 
 <!-- Bootstrap Core CSS -->
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
@@ -21,6 +21,9 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.min.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/rateit.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap-select.min.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/css-custom.min.css') }}">
+<link href="{{ asset('frontend/assets/css/lightbox.css') }}" rel="stylesheet">
+
 
 <!-- Icons/Glyphs -->
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/font-awesome.css') }}">
