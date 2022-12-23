@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/rateit.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap-select.min.css') }}">
 <link rel="stylesheet" href="{{ asset('frontend/assets/css/css-custom.min.css') }}">
-<link href="{{ asset('frontend/assets/css/lightbox.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('frontend/assets/css/lightbox.css') }}">
 
 
 <!-- Icons/Glyphs -->
