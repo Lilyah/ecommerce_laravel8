@@ -301,27 +301,44 @@
             <div class="detail-block">
 				<div class="row  wow fadeInUp">
                 
-					     <div class="col-xs-12 col-sm-6 col-md-5 gallery-holder">
+					<div class="col-xs-12 col-sm-6 col-md-5 gallery-holder">
+
+
+	<!-- SINGLE PRODUCT SLIDERS -->
     <div class="product-item-holder size-big single-product-gallery small-gallery">
 
+		<!-- BIG SLIDER -->
         <div id="owl-single-product">
 
-		@foreach ($multiimages as $multiimage)
-
-            <div class="single-product-gallery-item" id="slide{{$multiimage->id}}">
-                <a data-lightbox="image-{{$multiimage->id}}" data-title="Gallery" href="{{ asset($multiimage->photo_name) }}">
-                    <img class="img-responsive" alt="" src="{{ asset($multiimage->photo_name) }}" data-echo="{{ asset($multiimage->photo_name) }}" />
+			<div class="single-product-gallery-item" id="slide{{$product->id}}">
+                <a data-lightbox="image-1" data-title="Gallery" href="{{ asset($product->product_thumbnail) }}">
+                    <img class="img-responsive" alt="" src="{{ asset($product->product_thumbnail) }}" data-echo="{{ asset($product->product_thumbnail) }}" />
                 </a>
             </div><!-- /.single-product-gallery-item -->
 
-		@endforeach
+			@foreach ($multiimages as $multiimage)
+
+            	<div class="single-product-gallery-item" id="slide{{$multiimage->id}}">
+            	    <a data-lightbox="image-1" data-title="Gallery" href="{{ asset($multiimage->photo_name) }}">
+            	        <img class="img-responsive" alt="" src="{{ asset($multiimage->photo_name) }}" data-echo="{{ asset($multiimage->photo_name) }}" />
+            	    </a>
+            	</div><!-- /.single-product-gallery-item -->
+
+			@endforeach
 
         </div><!-- /.single-product-slider -->
 
 
+		<!-- THUMBNAIL SLIDER -->
         <div class="single-product-gallery-thumbs gallery-thumbs">
 
             <div id="owl-single-product-thumbnails">
+
+				<div class="item">
+                    <a class="horizontal-thumb active" data-target="#owl-single-product" data-slide="{{$product->id}}" href="#slide{{ $product->id }}">
+                        <img class="img-responsive" width="85" alt="" src="{{ asset($product->product_thumbnail) }}" data-echo="{{ asset($product->product_thumbnail) }}" />
+                    </a>
+                </div>
 
 			@foreach ($multiimages as $multiimage)
 
@@ -340,6 +357,7 @@
         </div><!-- /.gallery-thumbs -->
 
     </div><!-- /.single-product-gallery -->
+
 </div><!-- /.gallery-holder -->        		
 
 
