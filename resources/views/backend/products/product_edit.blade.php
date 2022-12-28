@@ -388,11 +388,11 @@
 								<div class="form-group">
 									<div class="controls">
 										<fieldset>
-											<input type="checkbox" id="checkbox_4" value="{{ $product->special_offer }}" name="special_offer" {{ $product->special_offer == 1 ? 'checked' : '' }}>
+											<input type="checkbox" id="checkbox_4" value="1" name="special_offer" {{ $product->special_offer == 1 ? 'checked' : '' }}>
 											<label for="checkbox_4">Special Offer</label>
 										</fieldset>
 										<fieldset>
-											<input type="checkbox" id="checkbox_5" value="{{ $product->special_deals }}" name="special_deals" {{ $product->special_deals == 1 ? 'checked' : '' }}>
+											<input type="checkbox" id="checkbox_5" value="1" name="special_deals" {{ $product->special_deals == 1 ? 'checked' : '' }}>
 											<label for="checkbox_5">Special Deals</label>
 										</fieldset>
 									</div>
