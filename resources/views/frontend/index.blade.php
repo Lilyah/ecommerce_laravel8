@@ -132,12 +132,23 @@
           <h3 class="section-title">{{ (session()->get('language') == 'english') ? 'Hot deals' : 'Горещи оферти'; }}</h3>
           <div class="owl-carousel sidebar-carousel custom-carousel owl-theme outer-top-ss">
 
+          @foreach ($hot_deals as $single_hot_deal)
             <div class="item">
               <div class="products">
                 <div class="hot-deal-wrapper">
-                  <div class="image"> <img src="assets/images/hot-deals/p25.jpg" alt=""> </div>
-                  <div class="sale-offer-tag"><span>49%<br>
-                    off</span></div>
+                  <div class="image"> <a href="{{ url('product/details/'.$single_hot_deal->id.'/'.$single_hot_deal->product_slug_en) }}"><img src="{{ asset($single_hot_deal->product_thumbnail) }}" alt=""> </div>
+                  <!-- /.image -->
+
+                  @php
+                    $amount = $single_hot_deal->selling_price - $single_hot_deal->discount_price;
+                    $discount = ($amount / $single_hot_deal->selling_price) * 100;
+                  @endphp
+
+
+                  @if (!empty($single_hot_deal->discount_price))
+                      <div class="sale-offer-tag"><span>{!! round($discount).'%<br>off' !!}</span></div>
+                  @endif
+
                   <div class="timing-wrapper">
                     <div class="box-wrapper">
                       <div class="date box"> <span class="key">120</span> <span class="value">DAYS</span> </div>
@@ -156,9 +167,19 @@
                 <!-- /.hot-deal-wrapper -->
                 
                 <div class="product-info text-left m-t-20">
-                  <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                  <h3 class="name"><a href="{{ url('product/details/'.$single_hot_deal->id.'/'.$single_hot_deal->product_slug_en) }}">{{ (session()->get('language') == 'english') ? $single_hot_deal->product_name_en : $single_hot_deal->product_name_bg; }}</a></h3>
                   <div class="rating rateit-small"></div>
-                  <div class="product-price"> <span class="price"> $600.00 </span> <span class="price-before-discount">$800.00</span> </div>
+
+                  @if (!empty($single_hot_deal->discount_price))
+                    <div class="product-price"> 
+                      <span class="price">${{ $single_hot_deal->discount_price }}</span> 
+                      <span class="price-before-discount">${{ $single_hot_deal->selling_price }}</span> 
+                    </div>
+                  @else
+                    <div class="product-price"> 
+                      <span class="price">${{ $single_hot_deal->selling_price }}</span>
+                    </div>
+                  @endif    
                   <!-- /.product-price --> 
                   
                 </div>
@@ -176,6 +197,8 @@
                 <!-- /.cart --> 
               </div>
             </div>
+
+            @endforeach
 
           </div>
           <!-- /.sidebar-widget --> 
