@@ -70,6 +70,7 @@ class CategoriesController extends Controller
                 'category_slug_en' => strtolower(str_replace(' ', '-', $request->category_name_en)), // the space will be replaced by -
                 'category_slug_bg' => strtolower(str_replace(' ', '-', $request->category_name_bg)),
                 'category_icon' => $request->category_icon,
+                'cat_on_index_page' => $request->cat_on_index_page,
                 'updated_at' => Carbon::now(),
             ]);
         

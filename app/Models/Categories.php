@@ -15,6 +15,7 @@ class Categories extends Model
         'category_slug_en',
         'category_slug_bg',
         'category_icon',
+        'cat_on_index_page',
     ];
 
         // Relationship with Products table

@@ -54,6 +54,17 @@
                                 </div>
 					    	</div>
 
+
+									<div class="form-group">
+										<div class="controls">
+											<fieldset>
+												<input type="checkbox" id="checkbox_6" value="1" name="cat_on_index_page" {{ $category->cat_on_index_page == 1 ? 'checked' : '' }}>
+												<label for="checkbox_6">Show Category with Slider on Index page</label>
+											</fieldset>
+										</div>
+									</div>
+
+
                             <div class="text-xs-right">
 					    		<input type="submit" class="btn btn-rounded btn-primary mb-5" value="Update">
 					    	</div>
