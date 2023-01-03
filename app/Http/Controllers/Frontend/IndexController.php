@@ -22,7 +22,7 @@ class IndexController extends Controller
         $sliders = Slider::where('status', 1)->orderBy('id', 'DESC')->get(); // getting active sliders
         $products = Products::where('status', 1)->orderBy('created_at', 'DESC')->get(); // getting active products 
         $featured = Products::where('featured', 1)->orderBy('created_at', 'DESC')->get(); // getting featured products 
-        $hot_deals = Products::where('hot_deals', 1)->orderBy('created_at', 'DESC')->get(); // getting hot deals products 
+        $hot_deals = Products::where('hot_deals', 1)->where('discount_price', '<=', 'selling_price')->orderBy('created_at', 'DESC')->get(); // getting hot deals products 
         $special_offer = Products::where('special_offer', 1)->orderBy('created_at', 'DESC')->get(); // getting special offer products 
         $special_deals = Products::where('special_deals', 1)->orderBy('created_at', 'DESC')->get(); // getting special deals products 
         $cat_on_index_page_en = Categories::where('cat_on_index_page', 1)->has('products')->orderBy('category_name_en', 'ASC')->get(); // getting visible categories in EN
