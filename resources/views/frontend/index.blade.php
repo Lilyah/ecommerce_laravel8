@@ -267,17 +267,71 @@
         </div>
         <!-- /.sidebar-widget --> 
         <!-- ============================================== SPECIAL OFFER : END ============================================== --> 
+
+
+
+
+
+
+
+
+
         <!-- ============================================== PRODUCT TAGS ============================================== -->
-        <div class="sidebar-widget product-tag wow fadeInUp">
-          <h3 class="section-title">Product tags</h3>
-          <div class="sidebar-widget-body outer-top-xs">
-            <div class="tag-list"> <a class="item" title="Phone" href="category.html">Phone</a> <a class="item active" title="Vest" href="category.html">Vest</a> <a class="item" title="Smartphone" href="category.html">Smartphone</a> <a class="item" title="Furniture" href="category.html">Furniture</a> <a class="item" title="T-shirt" href="category.html">T-shirt</a> <a class="item" title="Sweatpants" href="category.html">Sweatpants</a> <a class="item" title="Sneaker" href="category.html">Sneaker</a> <a class="item" title="Toys" href="category.html">Toys</a> <a class="item" title="Rose" href="category.html">Rose</a> </div>
-            <!-- /.tag-list --> 
+
+        @php
+
+         $tags_en = App\Models\Products::groupBy('product_tags_en')->select('product_tags_en')->get();
+         $tags_bg = App\Models\Products::groupBy('product_tags_bg')->select('product_tags_bg')->get();
+
+        @endphp
+
+        @if (session()->get('language') == 'english')
+
+          <div class="sidebar-widget product-tag wow fadeInUp">
+            <h3 class="section-title">Product tags</h3>
+            <div class="sidebar-widget-body outer-top-xs">
+              <div class="tag-list"> 
+
+              @foreach ($tags_en as $tag_en)
+                <a class="item" title="tag" href="#">{{ $tag_en->product_tags_en}}</a> 
+              @endforeach
+
+              </div>
+              <!-- /.tag-list --> 
+            </div>
+            <!-- /.sidebar-widget-body --> 
           </div>
-          <!-- /.sidebar-widget-body --> 
-        </div>
-        <!-- /.sidebar-widget --> 
+          <!-- /.sidebar-widget --> 
+
+        @else
+
+        <div class="sidebar-widget product-tag wow fadeInUp">
+            <h3 class="section-title">Тагове</h3>
+            <div class="sidebar-widget-body outer-top-xs">
+              <div class="tag-list"> 
+
+              @foreach ($tags_bg as $tag_bg)
+                <a class="item" title="tag" href="#">{{ $tag_bg->product_tags_bg}}</a> 
+              @endforeach
+
+              </div>
+              <!-- /.tag-list --> 
+            </div>
+            <!-- /.sidebar-widget-body --> 
+          </div>
+          <!-- /.sidebar-widget --> 
+
+        @endif
+
         <!-- ============================================== PRODUCT TAGS : END ============================================== --> 
+
+
+
+
+
+
+
+
         <!-- ============================================== SPECIAL DEALS ============================================== -->
         
         <div class="sidebar-widget outer-bottom-small wow fadeInUp">
