@@ -278,13 +278,6 @@
 
         <!-- ============================================== PRODUCT TAGS ============================================== -->
 
-        @php
-
-         $tags_en = App\Models\Products::groupBy('product_tags_en')->select('product_tags_en')->get();
-         $tags_bg = App\Models\Products::groupBy('product_tags_bg')->select('product_tags_bg')->get();
-
-        @endphp
-
         @if (session()->get('language') == 'english')
 
           <div class="sidebar-widget product-tag wow fadeInUp">

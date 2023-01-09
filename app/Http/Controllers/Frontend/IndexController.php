@@ -27,6 +27,8 @@ class IndexController extends Controller
         $special_deals = Products::where('special_deals', 1)->orderBy('created_at', 'DESC')->get(); // getting special deals products 
         $cat_on_index_page_en = Categories::where('cat_on_index_page', 1)->has('products')->orderBy('category_name_en', 'ASC')->get(); // getting visible categories in EN
         $cat_on_index_page_bg = Categories::where('cat_on_index_page', 1)->has('products')->orderBy('category_name_bg', 'ASC')->get(); // getting visible categories
+        $tags_en = Products::groupBy('product_tags_en')->select('product_tags_en')->get(); // getting the grouped tags_en
+        $tags_bg = Products::groupBy('product_tags_bg')->select('product_tags_bg')->get(); // getting the grouped tags_bg
 
         // Retrieve all categories that have at least one product
         // For has('products') you need the relationship categories-products in Categories model
@@ -43,6 +45,8 @@ class IndexController extends Controller
             'special_deals',
             'cat_on_index_page_en',
             'cat_on_index_page_bg',
+            'tags_en',
+            'tags_bg',
         ));
     }
 
