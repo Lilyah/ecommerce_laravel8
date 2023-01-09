@@ -196,7 +196,7 @@
                                 <div class="form-group">
                                     <h5>Product Tags BG <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_tags_bg" class="form-control" value="{{ $product->product_name_bg }}" data-role="tagsinput" placeholder="add tags"> 
+                                        <input type="text" name="product_tags_bg" class="form-control" value="{{ $product->product_tags_bg }}" data-role="tagsinput" placeholder="add tags"> 
                                         @error('product_tags_bg')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
