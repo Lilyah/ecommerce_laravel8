@@ -268,63 +268,6 @@
         <!-- /.sidebar-widget --> 
         <!-- ============================================== SPECIAL OFFER : END ============================================== --> 
 
-
-
-
-
-
-
-
-
-        <!-- ============================================== PRODUCT TAGS ============================================== -->
-
-        @if (session()->get('language') == 'english')
-
-          <div class="sidebar-widget product-tag wow fadeInUp">
-            <h3 class="section-title">Product tags</h3>
-            <div class="sidebar-widget-body outer-top-xs">
-              <div class="tag-list"> 
-
-              @foreach ($tags_en as $tag_en)
-                <a class="item" title="tag" href="#">{{ $tag_en->product_tags_en}}</a> 
-              @endforeach
-
-              </div>
-              <!-- /.tag-list --> 
-            </div>
-            <!-- /.sidebar-widget-body --> 
-          </div>
-          <!-- /.sidebar-widget --> 
-
-        @else
-
-        <div class="sidebar-widget product-tag wow fadeInUp">
-            <h3 class="section-title">Тагове</h3>
-            <div class="sidebar-widget-body outer-top-xs">
-              <div class="tag-list"> 
-
-              @foreach ($tags_bg as $tag_bg)
-                <a class="item" title="tag" href="#">{{ $tag_bg->product_tags_bg}}</a> 
-              @endforeach
-
-              </div>
-              <!-- /.tag-list --> 
-            </div>
-            <!-- /.sidebar-widget-body --> 
-          </div>
-          <!-- /.sidebar-widget --> 
-
-        @endif
-
-        <!-- ============================================== PRODUCT TAGS : END ============================================== --> 
-
-
-
-
-
-
-
-
         <!-- ============================================== SPECIAL DEALS ============================================== -->
         
         <div class="sidebar-widget outer-bottom-small wow fadeInUp">
