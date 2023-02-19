@@ -8,6 +8,11 @@
 <meta name="author" content="">
 <meta name="keywords" content="eCommerce">
 <meta name="robots" content="all">
+
+  <!-- Favicon -->
+  <link rel="icon" href="{{ url('frontend/favicon/favicon.png') }}">
+
+
 <title>@yield('page_title')</title>
 
 <!-- Bootstrap Core CSS -->
