@@ -13,6 +13,9 @@ use App\Models\Slider;
 use App\Models\Products;
 use App\Models\MultiImg;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Pagination\Paginator;
+
+
 
 class IndexController extends Controller
 {
@@ -129,5 +132,25 @@ class IndexController extends Controller
             'product',
             'multiimages',
         ));
+    }
+
+    // Subcategory Products View
+    public function SubCategoryProducts($cat_slug_en, $subcat_slug_en, $subcat_id){
+
+        $products = Products::where('subcategory_id', $subcat_id)
+                    ->where('status',1)
+                    ->orderBy('created_at', 'DESC')
+                    ->paginate(25);  
+                    
+        $subcategory = Categories::findOrFail($subcat_id);
+
+        $categories = Categories::orderBy('category_name_en', 'ASC')->get();
+
+        return view('frontend.products.subcategory_view', compact(
+            'products', 
+            'subcategory', 
+            'categories'
+        ));
+
     }
 }

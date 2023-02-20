@@ -162,3 +162,7 @@ Route::get('/language/bulgarian', [LanguageController::class, 'Bulgarian'])->nam
 
 // Product Details
 Route::get('/product/details/{id}/{slug_en}', [IndexController::class, 'ProductDetails']); // don't need name, because it has been use by url('...')
+
+
+// Subcategories wise data
+Route::get('{cat_slug_en}/{subcat_slug_en}/{subcat_id}/products', [IndexController::class, 'SubCategoryProducts']); // don't need name, because it has been use by url('...')

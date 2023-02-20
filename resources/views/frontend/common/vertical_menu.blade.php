@@ -22,8 +22,9 @@
 
                   @foreach ($subcategories as $subcategory)
                     <div class="col-sm-12 col-md-3">
-                      <h2 class="title">{{ $subcategory->subcategory_name_en }}</h2>
-
+                      <a href="{{ url($category->category_slug_en.'/'.$subcategory->subcategory_slug_en.'/'.$subcategory->id.'/products') }}">
+                        <h2 class="title">{{ $subcategory->subcategory_name_en }}</h2>
+                      </a>
                       <ul class="links list-unstyled">
 
                         <!-- Access to the SubSubCategories Model -->
