@@ -23,8 +23,8 @@
 	<h4 class="">Sign in</h4>
 	<p class="">Hello, Welcome to your account.</p>
 	<div class="social-sign-in outer-top-xs">
-		<a href="#" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
-		<a href="#" class="twitter-sign-in"><i class="fa fa-twitter"></i> Sign In with Twitter</a>
+		<a href="#" class="facebook-sign-in"><i class="fa-brands fa-facebook"></i> Sign In with Facebook</a>
+		<a href="#" class="twitter-sign-in"><i class="fa-brands fa-twitter"></i> Sign In with Twitter</a>
 	</div>
 
     @if (session('status'))
