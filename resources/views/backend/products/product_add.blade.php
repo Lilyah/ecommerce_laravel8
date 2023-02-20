@@ -107,7 +107,7 @@
                                 <div class="form-group">
                                     <h5>Product Name EN <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_name_en" class="form-control"> 
+                                        <input type="text" name="product_name_en" class="form-control" value="{{ old('product_name_en') }}"> 
                                         @error('product_name_en')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -120,7 +120,7 @@
                                 <div class="form-group">
                                     <h5>Product Name BG <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_name_bg" class="form-control"> 
+                                        <input type="text" name="product_name_bg" class="form-control" value="{{ old('product_name_bg') }}"> 
                                         @error('product_name_bg')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -139,7 +139,7 @@
                                 <div class="form-group">
                                     <h5>Product Code <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_code" class="form-control"> 
+                                        <input type="text" name="product_code" class="form-control" value="{{ old('product_code') }}"> 
                                         @error('product_code')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -152,7 +152,7 @@
                                 <div class="form-group">
                                     <h5>Product QTY <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_qty" class="form-control"> 
+                                        <input type="text" name="product_qty" class="form-control" value="{{ old('product_qty') }}"> 
                                         @error('product_qty')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -165,7 +165,7 @@
                                 <div class="form-group">
                                     <h5>Product Tags EN <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_tags_en" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags"> 
+                                        <input type="text" name="product_tags_en" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags" value="{{ old('product_tags_en') }}"> 
                                         @error('product_tags_en')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -184,7 +184,7 @@
                                 <div class="form-group">
                                     <h5>Product Tags BG <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_tags_bg" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags"> 
+                                        <input type="text" name="product_tags_bg" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags" value="{{ old('product_tags_bg') }}"> 
                                         @error('product_tags_bg')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -197,7 +197,7 @@
                                 <div class="form-group">
                                     <h5>Product Size EN <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_size_en" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags"> 
+                                        <input type="text" name="product_size_en" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags" value="{{ old('product_size_en') }}"> 
                                         @error('product_size_en')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -211,7 +211,7 @@
                                 <div class="form-group">
                                     <h5>Product Size BG <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_size_bg" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags"> 
+                                        <input type="text" name="product_size_bg" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags" value="{{ old('product_size_bg') }}"> 
                                         @error('product_size_bg')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -230,7 +230,7 @@
                                 <div class="form-group">
                                     <h5>Product Color EN <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_color_en" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags"> 
+                                        <input type="text" name="product_color_en" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags" value="{{ old('product_color_en') }}"> 
                                         @error('product_color_en')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -243,7 +243,7 @@
                                 <div class="form-group">
                                     <h5>Product Color BG <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="product_color_bg" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags"> 
+                                        <input type="text" name="product_color_bg" class="form-control" value="Lorem,Ipsum,Amet" data-role="tagsinput" placeholder="add tags" value="{{ old('product_color_bg') }}"> 
                                         @error('product_color_bg')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -256,7 +256,7 @@
                                 <div class="form-group">
                                     <h5>Product Selling Price <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="number" name="selling_price" class="form-control"> 
+                                        <input type="number" name="selling_price" class="form-control" value="{{ old('selling_price') }}"> 
                                         @error('selling_price')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -275,7 +275,7 @@
                                 <div class="form-group">
                                     <h5>Product Discount Price</h5>
                                     <div class="controls">
-                                        <input type="number" name="discount_price" class="form-control"> 
+                                        <input type="number" name="discount_price" class="form-control" value="{{ old('discount_price') }}"> 
                                         @error('discount_price')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -324,7 +324,7 @@
                                 <div class="form-group">
                                     <h5>Short Description EN <span class="text-danger">*</span></h5>
                                     <div class="controls">
-									    <textarea name="short_descp_en" class="form-control"></textarea>
+									    <textarea name="short_descp_en" class="form-control">{{ old('short_desцp_en') }}</textarea>
                                         @error('short_descp_en')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -337,7 +337,7 @@
                                 <div class="form-group">
                                     <h5>Short Description BG <span class="text-danger">*</span></h5>
                                     <div class="controls">
-									<textarea name="short_descp_bg" class="form-control"></textarea>
+									<textarea name="short_descp_bg" class="form-control">{{ old('short_descp_bg') }}</textarea>
                                         @error('short_descp_bg')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -354,7 +354,7 @@
                                 <div class="form-group">
                                     <h5>Long Description EN <span class="text-danger">*</span></h5>
                                     <div class="controls">
-									    <textarea id="editor1" rows="10" cols="80" name="long_descp_en"></textarea>
+									    <textarea id="editor1" rows="10" cols="80" name="long_descp_en">{{ old('long_descp_en') }}</textarea>
                                         @error('long_descp_en')
                                         <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -367,7 +367,7 @@
                                 <div class="form-group">
                                     <h5>Long Description BG <span class="text-danger">*</span></h5>
                                     <div class="controls">
-									<textarea id="editor2" rows="10" cols="80" name="long_descp_bg"></textarea>
+									<textarea id="editor2" rows="10" cols="80" name="long_descp_bg">{{ old('long_descp_bg') }}</textarea>
                                         @error('long_descp_bg')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
