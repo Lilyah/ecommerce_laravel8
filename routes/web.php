@@ -165,4 +165,4 @@ Route::get('/product/details/{id}/{slug_en}', [IndexController::class, 'ProductD
 
 
 // Subcategories wise data
-Route::get('{cat_slug_en}/{subcat_slug_en}/{subcat_id}/products', [IndexController::class, 'SubCategoryProducts']); // don't need name, because it has been use by url('...')
+Route::get('/{cat_slug_en}/{subcat_slug_en}/{subcat_id}/products', [IndexController::class, 'SubCategoryProducts']); // don't need name, because it has been use by url('...')
