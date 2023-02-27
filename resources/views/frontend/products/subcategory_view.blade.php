@@ -40,9 +40,9 @@
 
                         <!-- ============================================== SIDEBAR SHOP BY CATEGORY ============================================== -->
                         <div class="sidebar-widget wow fadeInUp">
-                            <h3 class="section-title">{{ (session()->get('language') == 'bulgarian') ? 'Shop by' : 'Пазарувай по' }}</h3>
+                            <h3 class="section-title">{{ (session()->get('language') == 'english') ? 'Shop by' : 'Пазарувай по' }}</h3>
                                 <div class="widget-header">
-                                    <h4 class="widget-title">{{ (session()->get('language') == 'bulgarian') ? 'Category' : 'Категория' }}</h4>
+                                    <h4 class="widget-title">{{ (session()->get('language') == 'english') ? 'Category' : 'Категория' }}</h4>
                                 </div>
 
                                 <div class="sidebar-widget-body">
