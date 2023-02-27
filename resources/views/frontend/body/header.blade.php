@@ -205,7 +205,7 @@
                             @foreach ($subcategories as $subcategory)
                               
                               <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                <a href="{{ url($category->category_slug_en.'/'.$subcategory->subcategory_slug_en.'/'.$subcategory->id.'/products') }}">
+                                <a href="{{ url($category->category_slug_en.'/'.$category->id.'/'.$subcategory->subcategory_slug_en.'/'.$subcategory->id.'/products') }}">
                                   <h2 class="title">{{ (session()->get('language') == 'english') ? $subcategory->subcategory_name_en : $subcategory->subcategory_name_bg }}</h2>
                                 </a>
 
@@ -217,7 +217,7 @@
                                 @foreach ($subsubcategories as $subsubcategory)
 
                                   <ul class="links">
-                                    <li><a href="{{ url($category->category_slug_en.'/'.$subcategory->subcategory_slug_en.'/'.$subsubcategory->subsubcategory_slug_en.'/'.$subsubcategory->id.'/products') }}">{{ (session()->get('language') == 'english') ? $subsubcategory->subsubcategory_name_en : $subsubcategory->subsubcategory_name_bg }}</a></li>
+                                    <li><a href="{{ url($category->category_slug_en.'/'.$category->id.'/'.$subcategory->subcategory_slug_en.'/'.$subcategory->id.'/'.$subsubcategory->subsubcategory_slug_en.'/'.$subsubcategory->id.'/products') }}">{{ (session()->get('language') == 'english') ? $subsubcategory->subsubcategory_name_en : $subsubcategory->subsubcategory_name_bg }}</a></li>
                                   </ul>
 
                                 @endforeach

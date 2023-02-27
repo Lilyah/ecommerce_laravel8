@@ -135,8 +135,11 @@ class IndexController extends Controller
     }
 
     // Subcategory Products View
-    public function SubCategoryProducts($cat_slug_en, $subcat_slug_en, $subcat_id){
+    public function SubCategoryProducts($cat_slug_en, $cat_id, $subcat_slug_en, $subcat_id){
         $subcategory = SubCategories::findOrFail($subcat_id);
+
+        // For Breadcrumbs
+        $category = Categories::where('id',$cat_id)->first();// for the breadcrumbs
 
         $products = Products::where('subcategory_id', $subcat_id)
                     ->where('status',1)
@@ -147,14 +150,19 @@ class IndexController extends Controller
 
         return view('frontend.products.subcategory_view', compact(
             'products', 
+            'category',
             'subcategory', 
             'categories_all'
         ));
     }
 
     // SubSubcategory Products View
-    public function SubSubCategoryProducts($cat_slug_en, $subcat_slug_en, $subsubcat_slug_en, $subsubcat_id){
+    public function SubSubCategoryProducts($cat_slug_en, $cat_id, $subcat_slug_en, $subcat_id, $subsubcat_slug_en, $subsubcat_id){
         $subsubcategory = SubSubCategories::findOrFail($subsubcat_id);
+
+        // For Breadcrumbs
+        $subcategory = SubCategories::where('id',$subcat_id)->first();
+        $category = Categories::where('id',$cat_id)->first();// for the breadcrumbs
 
         $products = Products::where('subsubcategory_id', $subsubcat_id)
                     ->where('status',1)
@@ -165,6 +173,8 @@ class IndexController extends Controller
 
         return view('frontend.products.subsubcategory_view', compact(
             'products', 
+            'category',
+            'subcategory',
             'subsubcategory', 
             'categories_all'
         ));

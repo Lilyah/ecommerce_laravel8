@@ -14,8 +14,10 @@
   <div class="container">
     <div class="breadcrumb-inner">
       <ul class="list-inline list-unstyled">
-        <li><a href="#">Home</a></li>
-        <li class='active'>Handbags</li>
+        <li><a href="/">{{ (session()->get('language') == 'english') ? 'Home' : 'Главна' }}</a></li>
+        <li><a href="/">{{ (session()->get('language') == 'english') ? $category->category_name_en : $category->category_name_bg }}</a></li>
+        <li><a href="{{ url($category->category_slug_en.'/'.$category->id.'/'.$subcategory->subcategory_slug_en.'/'.$subcategory->id.'/products') }}">{{ (session()->get('language') == 'english') ? $subcategory->subcategory_name_en : $subcategory->subcategory_name_bg }}</a></li>
+        <li class='active'>{{ (session()->get('language') == 'english') ? $subsubcategory->subsubcategory_name_en : $subsubcategory->subsubcategory_name_bg }}</li>
       </ul>
     </div><!-- /.breadcrumb-inner --> 
     
@@ -69,7 +71,7 @@
                                                         @foreach($subcategories as $subcategory)
                                                             <ul>
                                                                 <li>
-                                                                    <a href="{{ url($category->category_slug_en.'/'.$subcategory->subcategory_slug_en.'/'.$subcategory->id.'/products') }}">
+                                                                    <a href="{{ url($category->category_slug_en.'/'.$category->id.'/'.$subcategory->subcategory_slug_en.'/'.$subcategory->id.'/products') }}">
                                                                         @if(session()->get('language') == 'bulgarian') {{ $subcategory->subcategory_name_bg }} @else {{ $subcategory->subcategory_name_en }} @endif
                                                                     </a>
                                                                 </li>
