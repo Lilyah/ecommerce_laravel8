@@ -30,7 +30,7 @@
                         @endphp
 
                         @foreach ($subsubcategories as $subsubcategory)
-                        <li><a href="#">{{ (session()->get('language') == 'english') ? $subsubcategory->subsubcategory_name_en : $subsubcategory->subsubcategory_name_bg }}</a></li>
+                        <li><a href="{{ url($category->category_slug_en.'/'.$subcategory->subcategory_slug_en.'/'.$subsubcategory->subsubcategory_slug_en.'/'.$subsubcategory->id.'/products') }}">{{ (session()->get('language') == 'english') ? $subsubcategory->subsubcategory_name_en : $subsubcategory->subsubcategory_name_bg }}</a></li>
                         @endforeach
                       </ul>
                     </div><!-- /.col-sm-12 -->

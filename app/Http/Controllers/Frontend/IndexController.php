@@ -150,6 +150,28 @@ class IndexController extends Controller
             'subcategory', 
             'categories_all'
         ));
-
     }
+
+    // SubSubcategory Products View
+    public function SubSubCategoryProducts($cat_slug_en, $subcat_slug_en, $subsubcat_slug_en, $subsubcat_id){
+        $subsubcategory = SubSubCategories::findOrFail($subsubcat_id);
+
+        $products = Products::where('subsubcategory_id', $subsubcat_id)
+                    ->where('status',1)
+                    ->orderBy('created_at', 'DESC')
+                    ->paginate(25);  
+                    
+        $categories_all = Categories::orderBy('category_name_en', 'ASC')->get();
+
+        return view('frontend.products.subsubcategory_view', compact(
+            'products', 
+            'subsubcategory', 
+            'categories_all'
+        ));
+    }
+
+
+
+
+
 }
