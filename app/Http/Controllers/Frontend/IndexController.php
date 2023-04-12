@@ -146,6 +146,7 @@ class IndexController extends Controller
             ->orderBy('id', 'DESC')
             ->get();
 
+        $hot_deals = Products::where('hot_deals', 1)->where('discount_price', '<=', 'selling_price')->orderBy('created_at', 'DESC')->get(); // getting hot deals products 
 
         return view('frontend.products.product_details', compact(
             'product',
@@ -155,6 +156,7 @@ class IndexController extends Controller
             'product_colors_en',
             'product_colors_bg',
             'related_products',
+            'hot_deals',
         ));
     }
 
