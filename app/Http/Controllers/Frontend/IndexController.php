@@ -128,9 +128,33 @@ class IndexController extends Controller
         $product = Products::findOrFail($id);
         $multiimages = MultiImg::where('product_id',$id)->get(); // when the id from column 'product_id' is matching the product id
 
+        $sizes_en = $product->product_size_en;
+        $product_sizes_en = explode(',', $sizes_en);
+
+        $sizes_bg = $product->product_size_bg;
+        $product_sizes_bg = explode(',', $sizes_bg);
+
+        $colors_en = $product->product_color_en;
+        $product_colors_en = explode(',', $colors_en);
+
+        $colors_bg = $product->product_color_bg;
+        $product_colors_bg = explode(',', $colors_bg);
+
+        $product_subcategory_id = $product->subcategory_id;
+        $related_products = Products::where('subcategory_id', $product_subcategory_id)
+            ->where('id', '!=', $id)
+            ->orderBy('id', 'DESC')
+            ->get();
+
+
         return view('frontend.products.product_details', compact(
             'product',
             'multiimages',
+            'product_sizes_en',
+            'product_sizes_bg',
+            'product_colors_en',
+            'product_colors_bg',
+            'related_products',
         ));
     }
 
