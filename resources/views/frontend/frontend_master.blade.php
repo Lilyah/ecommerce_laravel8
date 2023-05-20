@@ -126,7 +126,10 @@
           <div class="col-md-4">
 
             <ul class="list-group">
-              <li class="list-group-item">Product Price: <strong>$</strong><strong id="price"></strong></li>
+              <li class="list-group-item">Product Price: 
+                <strong class="text-danger">$<span id="pprice"></span></strong>
+                <del id="oldprice">$</del>
+              </li>
               <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
               <li class="list-group-item">Brand: <strong id="{{ (session()->get('language') == 'english') ? 'pbranden' : 'pbrandbg'  }}"></strong></li>
               <li class="list-group-item">Category: <strong id="{{ (session()->get('language') == 'english') ? 'pcategoryen' : 'pcategorybg'  }}"></strong></li>
@@ -195,6 +198,16 @@
         $('#pcategorybg').text(data.product.category.category_name_bg); // 'categorgy' is comming from relationship in the Products model
         $('#pstock').text(data.product.product_qty);
         $('#pimage').attr('src','/'+data.product.product_thumbnail);
+
+        // Product Price (if there is a discount_price there will be displayed both prices)
+        if (data.product.discount_price == null){
+          $('#pprice').text('');
+          $('#oldprice').text('');
+          $('#pprice').text(data.product.selling_price);
+        } else {
+          $('#pprice').text(data.product.discount_price);
+          $('#oldprice').text(data.product.selling_price);
+        }
 
         // Color Modal EN
         $('select[name="colors_en"]').empty();        
