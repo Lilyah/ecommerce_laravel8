@@ -160,6 +160,36 @@ class IndexController extends Controller
         ));
     }
 
+    // Product View with Modal ajax
+    public function ProductViewAjax($id){
+        //  with('category', 'brand') is comming from the relationships in the Products modelz
+        $product = Products::with('category', 'brand')
+            ->findOrFail($id);
+
+        $sizes_en = $product->product_size_en;
+        $product_sizes_en = explode(',', $sizes_en);
+
+        $sizes_bg = $product->product_size_bg;
+        $product_sizes_bg = explode(',', $sizes_bg);
+
+        $colors_en = $product->product_color_en;
+        $product_colors_en = explode(',', $colors_en);
+
+        $colors_bg = $product->product_color_bg;
+        $product_colors_bg = explode(',', $colors_bg);
+
+        $product_subcategory_id = $product->subcategory_id;
+
+        return response()->json(array(
+            'product' => $product,
+            'sizes_en' => $product_sizes_en,
+            'sizes_bg' => $product_sizes_bg,
+            'colors_en' => $product_colors_en,
+            'colors_bg' => $product_colors_bg,
+        ));
+
+    }
+
     // Subcategory Products View
     public function SubCategoryProducts($cat_slug_en, $cat_id, $subcat_slug_en, $subcat_id){
         $subcategory = SubCategories::findOrFail($subcat_id);

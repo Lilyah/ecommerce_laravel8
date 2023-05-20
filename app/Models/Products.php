@@ -16,5 +16,10 @@ class Products extends Model
         return $this->belongsTo(Categories::class,'category_id','id');
     }
 
+    // Relationship with Brands table
+    public function brand(){
+        return $this->belongsTo(Brands::class,'brand_id','id');
+    }
+
 
 }

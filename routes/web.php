@@ -163,9 +163,11 @@ Route::get('/language/bulgarian', [LanguageController::class, 'Bulgarian'])->nam
 // Product Details
 Route::get('/product/details/{id}/{slug_en}', [IndexController::class, 'ProductDetails']); // don't need name, because it has been use by url('...')
 
+// Product View Modal with ajax
+Route::get('/product/details/{id}/{slug_en}', [IndexController::class, 'ProductDetails']); 
 
 // Subcategories wise data
-Route::get('/{cat_slug_en}/{cat_id}/{subcat_slug_en}/{subcat_id}/products', [IndexController::class, 'SubCategoryProducts']); // don't need name, because it has been use by url('...')
+Route::get('/{cat_slug_en}/{cat_id}/{subcat_slug_en}/{subcat_id}/products', [IndexController::class, 'SubCategoryProducts']); // doesn't need a name, because it has been use by url('...')
 
 // SubSubcategories wise data
-Route::get('/{cat_slug_en}/{cat_id}/{subcat_slug_en}/{subcat_id}/{subsubcat_slug_en}/{subsubcat_id}/products', [IndexController::class, 'SubSubCategoryProducts']); // don't need name, because it has been use by url('...')
+Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']); // doesn't need a name, because it has been use by url('...')

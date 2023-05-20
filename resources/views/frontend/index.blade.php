@@ -571,7 +571,7 @@
                     <div class="action">
                       <ul class="list-unstyled">
                         <li class="add-cart-button btn-group">
-                          <button class="btn btn-primary icon" data-toggle="modal" data-target="#exampleModal" type="button" title="{{ (session()->get('language') == 'english') ? 'Add to cart' : 'Добави в Kоличка'; }}"> <i class="fa fa-shopping-cart"></i> </button>
+                          <button class="btn btn-primary icon" data-toggle="modal" data-target="#exampleModal" type="button" id="{{ $single_featured->id }}" onclick="productView(this.id)" title="{{ (session()->get('language') == 'english') ? 'Add to cart' : 'Добави в Kоличка'; }}"> <i class="fa fa-shopping-cart"></i> </button>
                           <button class="btn btn-primary cart-btn" type="button"></button>
                         </li>
                         <li class="lnk wishlist"> <a class="add-to-cart" href="detail.html" title="Wishlist"> <i class="icon fa fa-heart"></i> </a> </li>
