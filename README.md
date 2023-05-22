@@ -48,7 +48,7 @@
 ![Admin categories view](./readme_images/admin_categories_view.png)
 ![Admin manage products view](./readme_images/admin_manage_products_view.png)
 ![Admin edit product view](./readme_images/admin_edit_product_view.png)
-![Admin manage slider view](./readme_images/admin_manage_slider_view.png)ddd
+![Admin manage slider view](./readme_images/admin_manage_slider_view.png)
 
 
 ### User Panel
