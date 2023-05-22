@@ -133,7 +133,10 @@
               <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
               <li class="list-group-item">Brand: <strong id="{{ (session()->get('language') == 'english') ? 'pbranden' : 'pbrandbg'  }}"></strong></li>
               <li class="list-group-item">Category: <strong id="{{ (session()->get('language') == 'english') ? 'pcategoryen' : 'pcategorybg'  }}"></strong></li>
-              <li class="list-group-item">Stock: <strong id="pstock"></strong></li>
+              <li class="list-group-item">Stock: 
+                <strong id="available"></strong>
+                <span class="badge badge-pill badge-danger" id="outofstock" style="background: red; color: white;"></span>
+              </li>
             </ul>
 
           </div><!-- /.col-md-4 -->
@@ -154,8 +157,8 @@
             </div><!-- /.form-group -->
 
             <div class="form-group">
-              <label for="exampleFormControlInput1">{{ (session()->get('language') == 'english') ? 'Qty: ' : 'Брой: ' }}</label>
-              <input type="number" class="form-control" id="exampleFormControlInput1" value="1" min="1">
+              <label for="maxStock">{{ (session()->get('language') == 'english') ? 'Qty: ' : 'Брой: ' }}</label>
+              <input type="number" class="form-control" id="maxStock" value="0" min="0">
             </div>
 
             <button type="submit" class="btn btn-primary mb-2">{{ (session()->get('language') == 'english') ? 'ADD TO CART' : 'ДОБАВИ В КОЛИЧКА' }}</button>
@@ -209,6 +212,14 @@
           $('#oldprice').text(data.product.selling_price);
         }
 
+        // Stock Option
+        if (data.product.product_qty > 0){
+          $('#available').text(data.product.product_qty);
+        } else {
+          $('#outofstock').text('Out of Stock');
+        }
+
+
         // Color Modal EN
         $('select[name="colors_en"]').empty();        
         $.each(data.colors_en,function(key,value){
@@ -254,6 +265,10 @@
           }
         })
 
+        // Max input products on stock in Modal
+        $("#maxStock").attr({
+          "max" : data.product.product_qty,
+        });
 
       }
     })
