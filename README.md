@@ -43,8 +43,8 @@
 - SubSubCategories - CRUD
 - Products - CRUD (Separated in two sections: Add Product, Manage products)
 
-(./readme_images/admin_brands_view.png)
-(./readme_images/admin_brands_edit.png)
+![Admin brands view](./readme_images/admin_brands_view.png)
+![Admin brands edit](./readme_images/admin_brands_edit.png)
 
 
 
