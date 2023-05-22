@@ -42,10 +42,13 @@
 - SubCategories - CRUD
 - SubSubCategories - CRUD
 - Products - CRUD (Separated in two sections: Add Product, Manage products)
+- Slider - CRUD
 
 ![Admin brands view](./readme_images/admin_brands_view.png)
-![Admin brands edit](./readme_images/admin_brands_edit.png)
-
+![Admin categories view](./readme_images/admin_categories_view.png)
+![Admin manage products view](./readme_images/admin_manage_products_view.png)
+![Admin edit product view](./readme_images/admin_edit_product_view.png)
+![Admin manage slider view](./readme_images/admin_manage_slider_view.png)ddd
 
 
 ### User Panel
