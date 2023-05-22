@@ -36,16 +36,34 @@
 - User register, User login, User Forget password
 
 ### Admin Panel
-- Admin profile - [change profile image], [change email], [change username], [change password], admin logout
-- Brands - [view of all brands], [add brand], [edit brand], [delete brand]
-- Categories - [view of all categories], [add category], [edit category], [delete category]
-- SubCategories - [view of all subcategories], [add subcategory], [edit subcategory], [delete subcategory]
-- SubSubCategories - [view of all categories], [add subsubcategory], [edit subsubcategory], [delete subsubcategory]
+- Admin profile - Change profile image, Change email, Change username, Change password
+- Brands - CRUD
+- Categories - CRUD
+- SubCategories - CRUD
+- SubSubCategories - CRUD
+- Products - CRUD (Separated in two sections: Add Product, Manage products)
 
-- Products - [], [], [], []
+(./radme_images/admin_brands_view.png)
+(./radme_images/admin_brands_edit.png)
+
 
 
 ### User Panel
+
+
+### Frontend Home Page
+- Multiple languages
+- Categories, Subcategories, SubSubCategories inside Navigation Bar and Side menu
+- Sidebar with multiple tabs: Categories, Subcategories, SubSubCategories, Hot deals, Special offers
+- Dynamical main Slider
+- Multiple Tabs: New products, Featured products, Dynamically selected Category
+- Showing Products with titles, prices, discount prices, add to card, add to wishlist, tags ont the image,
+- Quick view and Quick order of a product
+
+### Single Product page
+- Multiple languages
+- Dynamical product images, title, price, discount price, availabilaty, short description, description, select quantity option, select color option, select sizeopcion
+- Related products section
 
 
 ## Screenshots
