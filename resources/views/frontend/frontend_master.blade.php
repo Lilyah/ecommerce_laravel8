@@ -135,7 +135,7 @@
               <li class="list-group-item">Category: <strong id="{{ (session()->get('language') == 'english') ? 'pcategoryen' : 'pcategorybg'  }}"></strong></li>
               <li class="list-group-item">Stock: 
                 <strong id="available"></strong>
-                <span class="badge badge-pill badge-danger" id="outofstock" style="background: red; color: white;"></span>
+                <span class="badge badge-pill badge-danger" id="outofstock" style="background: red; color: white; position: absolute;"></span>
               </li>
             </ul>
 
