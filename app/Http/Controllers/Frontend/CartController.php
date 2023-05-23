@@ -27,7 +27,11 @@ class CartController extends Controller
                 ],
             ]);
 
-            return response()->json(['success' => 'Successfully Added on Your Cart']);
+            if(session()->get('language') == 'english'){
+                return response()->json(['success' => 'Successfully Added to Your Cart']);
+            } else {
+                return response()->json(['success' => 'Продуктът е успешно добавен във Вашата количка']);
+            }
 
         }else{
             Cart::add([
@@ -43,8 +47,11 @@ class CartController extends Controller
                 ],
             ]);
 
-            return response()->json(['success' => 'Successfully Added on Your Cart']);
-
+            if(session()->get('language') == 'english'){
+                return response()->json(['success' => 'Successfully Added to Your Cart']);
+            } else {
+                return response()->json(['success' => 'Продуктът е успешно добавен във Вашата количка']);
+            }
         }
     }
 }

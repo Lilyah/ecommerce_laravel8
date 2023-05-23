@@ -77,6 +77,9 @@
 <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script> 
 <script src="{{ asset('frontend/assets/js/scripts.js') }}"></script>
 
+<!-- SweetAlert2 NOTIFICATIONS JS -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <!-- TOASTR NOTIFICATIONS JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
@@ -295,7 +298,27 @@
       url: "/cart/data/store/"+id,
       success:function(data){
         $('#closeModal').click(); // Close the Modal window when the "Add to Cart" button has been clicked
-        console.log(data)
+        // console.log(data)
+
+        // Sweetalert
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        if($.isEmptyObject(data.error)){
+          Toast.fire({
+            type: 'success',
+            title: data.success
+          })
+        }else{
+          Toast.fire({
+            type: 'error',
+            title: data.error
+          })
+        }
       }
     })
   }
@@ -317,7 +340,28 @@
       url: "/cart/data/store/"+id,
       success:function(data){
         $('#closeModal').click(); // Close the Modal window when the "Add to Cart" button has been clicked
-        console.log(data)
+        // console.log(data)
+        
+        // Sweetalert
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'top-end',
+          icon: 'success',
+          showConfirmButton: false,
+          timer: 3000
+        })
+        if($.isEmptyObject(data.error)){
+          Toast.fire({
+            type: 'success',
+            title: data.success
+          })
+        }else{
+          Toast.fire({
+            type: 'error',
+            title: data.error
+          })
+        }
+
       }
     })
   }
