@@ -152,7 +152,7 @@
 						<div class='col-sm-6 col-md-7 product-info-block'>
 							<div class="product-info">
 
-								<h1 class="name">{{ (session()->get('language') == 'english') ? $product->product_name_en : $product->product_name_bg }}</h1>
+								<h1 class="name" id="{{ (session()->get('language') == 'english') ? 'pnameen' : 'pnamebg' }}">{{ (session()->get('language') == 'english') ? $product->product_name_en : $product->product_name_bg }}</h1>
 
 								<!-- REVIEWS -->
 								<div class="rating-reviews m-t-20">
@@ -235,7 +235,7 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label class="info-title control-label">{{ (session()->get('language') == 'english') ? 'Choose Color' : 'Изберете Цвят' }} <span style="color:red">*</span></label>
-											<select class="form-control unicase-form-control" name="product_color">
+											<select class="form-control unicase-form-control" name="product_color" id="color">
 												<option selected="" disabled="">--{{ (session()->get('language') == 'english') ? 'Choose Color' : 'Изберете Цвят' }}--</option>
 
 												@if (session()->get('language') == 'english')
@@ -273,7 +273,7 @@
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label class="info-title control-label">{{ (session()->get('language') == 'english') ? 'Choose Size' : 'Изберете Размер' }} <span style="color:red">*</span></label>
-											<select class="form-control unicase-form-control" name="product_size">
+											<select class="form-control unicase-form-control" name="product_size" id="size">
 												<option selected="" disabled="">--{{ (session()->get('language') == 'english') ? 'Choose Size' : 'Изберете Размер' }}--</option>
 
 												@if (session()->get('language') == 'english')
@@ -303,7 +303,7 @@
 
 								</div><!-- /.row -->
 
-								<!-- QTY -->
+								<!-- QTY, ADD TO CART BTN -->
 								<div class="quantity-container info-container">
 									<div class="row">
 
@@ -311,20 +311,17 @@
 											<span class="label">{{ (session()->get('language') == 'english') ? 'Qty: ' : 'Брой: ' }}</span>
 										</div>
 
-										<div class="col-sm-2">
+										<div class="col-sm-3">
 											<div class="cart-quantity">
-												<div class="quant-input">
-													<div class="arrows">
-														<div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
-														<div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
-													</div>
-													<input type="text" value="1">
-												</div>
+              									<input type="number" class="form-control" id="maxStock" value="0" min="0" max="{{ $product->product_qty }}">
 											</div>
 										</div>
 
+
+										<input type="hidden" id="product_id" value="{{ $product->id }}" min="1">
+
 										<div class="col-sm-7">
-											<a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i>{{ (session()->get('language') == 'english') ? 'ADD TO CART' : 'ДОБАВИ В КОЛИЧКА' }}</a>
+											<button type="submit" class="btn btn-primary" onclick="{{ (session()->get('language') == 'english') ? 'addToCartEN()' : 'addToCartBG()' }}"><i class="fa fa-shopping-cart inner-right-vs"></i>{{ (session()->get('language') == 'english') ? 'ADD TO CART' : 'ДОБАВИ В КОЛИЧКА' }} </button>
 										</div>
 
 
