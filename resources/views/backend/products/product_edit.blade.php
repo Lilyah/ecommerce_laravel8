@@ -348,7 +348,7 @@
                                 <div class="form-group">
                                     <h5>Long Description BG <span class="text-danger">*</span></h5>
                                     <div class="controls">
-									<textarea id="editor2" rows="10" cols="80" name="long_descp_bg">{!! $product->long_descp_bg !!}"</textarea>
+									<textarea id="editor2" rows="10" cols="80" name="long_descp_bg">{!! $product->long_descp_bg !!}</textarea>
                                         @error('long_descp_bg')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
