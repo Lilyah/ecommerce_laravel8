@@ -107,7 +107,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel"><span id="{{ (session()->get('language') == 'english') ? 'pnameen' : 'pnamebg'  }}"></span></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModal">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
@@ -161,7 +161,8 @@
               <input type="number" class="form-control" id="maxStock" value="0" min="0">
             </div>
 
-            <button type="submit" class="btn btn-primary mb-2">{{ (session()->get('language') == 'english') ? 'ADD TO CART' : 'ДОБАВИ В КОЛИЧКА' }}</button>
+            <input type="hidden" id="product_id">
+            <button type="submit" class="btn btn-primary mb-2" onclick="{{ (session()->get('language') == 'english') ? 'addToCartEN()' : 'addToCartBG()' }}">{{ (session()->get('language') == 'english') ? 'ADD TO CART' : 'ДОБАВИ В КОЛИЧКА' }}</button>
 
 
           </div><!-- /.col-md-4 -->
@@ -201,6 +202,10 @@
         $('#pcategorybg').text(data.product.category.category_name_bg); // 'categorgy' is comming from relationship in the Products model
         $('#pstock').text(data.product.product_qty);
         $('#pimage').attr('src','/'+data.product.product_thumbnail);
+        $('#pstock').text(data.product.product_qty);
+        $('#product_id').val(id);
+        $('#maxStock').val(1);
+
 
         // Product Price (if there is a discount_price there will be displayed both prices)
         if (data.product.discount_price == null){
@@ -270,6 +275,49 @@
           "max" : data.product.product_qty,
         });
 
+      }
+    })
+  }
+
+  // Add to Cart Product EN
+  function addToCartEN(){
+    var product_name = $('#pnameen').text();
+    var id = $('#product_id').val();
+    var color = $('#colors_en option:selected').text();
+    var size = $('#sizes_en option:selected').text();
+    var qty = $('#maxStock').val();
+    $.ajax({
+      type: "POST",
+      dataType: 'json',
+      data:{
+        color:color, size:size, qty:qty, product_name:product_name
+      },
+      url: "/cart/data/store/"+id,
+      success:function(data){
+        $('#closeModal').click(); // Close the Modal window when the "Add to Cart" button has been clicked
+        console.log(data)
+      }
+    })
+  }
+
+
+  // Add to Cart Product BG
+  function addToCartBG(){
+    var product_name = $('#pnamebg').text();
+    var id = $('#product_id').val();
+    var color = $('#colors_bg option:selected').text();
+    var size = $('#sizes_bg option:selected').text();
+    var qty = $('#maxStock').val();
+    $.ajax({
+      type: "POST",
+      dataType: 'json',
+      data:{
+        color:color, size:size, qty:qty, product_name:product_name
+      },
+      url: "/cart/data/store/"+id,
+      success:function(data){
+        $('#closeModal').click(); // Close the Modal window when the "Add to Cart" button has been clicked
+        console.log(data)
       }
     })
   }

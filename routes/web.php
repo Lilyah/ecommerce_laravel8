@@ -172,3 +172,8 @@ Route::get('/{cat_slug_en}/{cat_id}/{subcat_slug_en}/{subcat_id}/products', [Ind
 
 // SubSubcategories wise data
 Route::get('/product/view/modal/{id}', [IndexController::class, 'ProductViewAjax']); // doesn't need a name, because it has been use by url('...')
+
+// Add to Cart
+Route::post('/cart/data/store/{id}', [CartController::class, 'addToCart']);
+
+
