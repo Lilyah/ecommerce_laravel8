@@ -227,8 +227,11 @@
 									</div><!-- /.row -->
 								</div><!-- /.price-container -->
 
-								<!-- SIZE, COLOR -->
-								<div class="row" style="margin-top: 10px">
+								@if ($product->product_qty > 0)
+								
+
+									<!-- SIZE, COLOR -->
+									<div class="row" style="margin-top: 10px">
 
 									@if (count($product_colors_en) > 1 && count($product_colors_bg) > 1 )
 
@@ -301,10 +304,10 @@
 
 									@endif
 
-								</div><!-- /.row -->
+									</div><!-- /.row -->
 
-								<!-- QTY, ADD TO CART BTN -->
-								<div class="quantity-container info-container">
+									<!-- QTY, ADD TO CART BTN -->
+									<div class="quantity-container info-container">
 									<div class="row">
 
 										<div class="col-sm-2">
@@ -326,7 +329,10 @@
 
 
 									</div><!-- /.row -->
-								</div><!-- /.quantity-container -->
+									</div><!-- /.quantity-container -->
+
+
+								@endif
 
 							</div><!-- /.product-info -->
 						</div><!-- /.col-sm-7 -->
