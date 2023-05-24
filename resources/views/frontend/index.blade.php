@@ -244,10 +244,10 @@
                 <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
-                      <h4 class="info-box-heading green">money back</h4>
+                      <h4 class="info-box-heading green">{{ (session()->get('language') == 'english') ? 'money back' : 'връщане на парите'; }}</h4>
                     </div>
                   </div>
-                  <h6 class="text">30 Days Money Back Guarantee</h6>
+                  <h6 class="text">{{ (session()->get('language') == 'english') ? '30 Days Money Back Guarantee' : '30 дневна гаранция за връщане на парите'; }}</h6>
                 </div>
               </div>
               <!-- .col -->
@@ -256,10 +256,10 @@
                 <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
-                      <h4 class="info-box-heading green">free shipping</h4>
+                      <h4 class="info-box-heading green">{{ (session()->get('language') == 'english') ? 'free shipping' : 'безплатна доставка'; }}</h4>
                     </div>
                   </div>
-                  <h6 class="text">Shipping on orders over $99</h6>
+                  <h6 class="text">{{ (session()->get('language') == 'english') ? 'Shipping on orders over $99' : 'За поръчки над $99'; }}</h6>
                 </div>
               </div>
               <!-- .col -->
@@ -268,10 +268,10 @@
                 <div class="info-box">
                   <div class="row">
                     <div class="col-xs-12">
-                      <h4 class="info-box-heading green">Special Sale</h4>
+                      <h4 class="info-box-heading green">{{ (session()->get('language') == 'english') ? 'Special Sale' : 'Специална отстъпка'; }}</h4>
                     </div>
                   </div>
-                  <h6 class="text">Extra $5 off on all items </h6>
+                  <h6 class="text">{{ (session()->get('language') == 'english') ? 'Extra $5 off on all items' : 'Допълнителни $5 отстъпка на всички артикули'; }}</h6>
                 </div>
               </div>
               <!-- .col --> 
